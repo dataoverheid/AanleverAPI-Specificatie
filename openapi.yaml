@@ -1,0 +1,2606 @@
+openapi: 3.1.0
+info:
+  title: Datastore API
+  description: REST API voor de datastore.
+  contact:
+    name: Data Overheid Nederland
+    url: https://data.overheid.nl
+    email: opendata@overheid.nl
+  version: 0.9.0
+servers:
+- url: /
+  description: Basis-URL van deze API.
+tags:
+- name: DCAT-catalog-records
+  description: Catalog-records van de ingelogde gebruiker of van de organisatie.
+- name: DCAT-distributies
+  description: De distributies van een DCAT-dataset.
+- name: DCAT-datasets
+  description: Opgeslagen DCAT-datasets en hun publicatiestatus.
+- name: Foutcodes
+  description: De foutcodes die deze API kan teruggeven.
+- name: Authenticatie
+  description: "Inloggen, uitloggen en tokens."
+paths:
+  /api/v1/datasets/{datasetId}:
+    get:
+      tags:
+      - DCAT-datasets
+      summary: Haal een opgeslagen DCAT-dataset op
+      description: "Geeft een opgeslagen DCAT-dataset terug. Zonder authenticatie\
+        \ zijn alleen gepubliceerde datasets zichtbaar. Met rol User zie je daarnaast\
+        \ de datasets van je eigen organisatie, met rol Admin alle datasets. Een dataset\
+        \ die je niet mag zien, geeft 404."
+      operationId: getDcatDataset
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: De opgevraagde dataset is gevonden.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDatasetResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+    put:
+      tags:
+      - DCAT-datasets
+      summary: Vervang een opgeslagen DCAT-dataset
+      description: Vervangt de hele opgeslagen DCAT-dataset.
+      operationId: replaceDcatDataset
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Volledige DCAT-datasetpayload die de bestaande dataset vervangt.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DcatDataset"
+            examples:
+              VervangendeRequestPayload:
+                description: VervangendeRequestPayload
+                value:
+                  dctIdentifier: https://erasmuspark.org/datasets/plant-species/simple
+                  dctTitle:
+                  - Erasmuspark Plant Species
+                  dctDescription:
+                  - "Dataset with observed plant species in Erasmuspark, including\
+                    \ species name and observation frequency."
+                  dctAccrualPeriodicity: http://publications.europa.eu/resource/authority/frequency/DAILY
+                  admsIdentifier:
+                  - ERASMUSPARK-PLANTS-SIMPLE
+                  dcatKeyword:
+                  - flora
+                  - plant species
+                  dcatTheme:
+                  - http://publications.europa.eu/resource/authority/data-theme/ENVI
+                  dctType: http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA
+                  dcatVersion: 1.2.0
+                  admsVersionNotes:
+                  - Metadata field alignment with April 2026 profile.
+                  dctPublisher:
+                    foafName:
+                    - Erasmuspark
+                  dctCreator:
+                  - foafName:
+                    - Erasmuspark
+                  dcatContactPoint:
+                    vcardFn: Erasmuspark Data Team
+                    vcardHasEmail: mailto:info@erasmuspark.org
+                    vcardHasUrl: https://erasmuspark.org/contact
+                  dctAccessRights: http://publications.europa.eu/resource/authority/access-right/PUBLIC
+                  admsStatus: http://publications.europa.eu/resource/authority/dataset-status/AVAILABLE
+                  dctIssued: 2026-01-22T00:00:00Z
+                  dctModified: 2026-01-22T00:00:00Z
+                  dcatDistribution:
+                  - dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                    dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                    dctTitle:
+                    - CSV distribution
+                    dctDescription:
+                    - CSV export of observed plant species in Erasmuspark.
+                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                  dcatHasVersion:
+                  - https://erasmuspark.org/datasets/plant-species/simp/versions/1.1.0
+                  dcatInSeries:
+                  - https://erasmuspark.org/datasets/plant-series
+                  dctIsReferencedBy:
+                  - https://erasmuspark.org/reports/biodiversity-2024
+                  dctProvenance:
+                  - https://erasmuspark.org/provenance/plant-observations
+                  provQualifiedAttribution:
+                  - provAgent: https://erasmuspark.org/agents/plant-volunteers
+                    provHadRole: http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode_custodian
+                  dcatQualifiedRelation:
+                  - https://erasmuspark.org/relations/plant-species-related
+                  dctRelation:
+                  - https://erasmuspark.org/datasets/plant-observations
+                  dctSource:
+                  - https://erasmuspark.org/source/plant-survey
+                  dcatSpatialResolutionInMeters: 25.5
+                  dctSpatial:
+                  - dctLocation: http://publications.europa.eu/resource/authority/country/NLD
+                    dcatCentroid: POINT (4.8489782 52.3746254)
+                  dctTemporal:
+                  - dcatStartDate: 2024-01-01
+                    dcatEndDate: 2024-12-31
+                    timeHasBeginning: 2024-01-01T00:00:00Z
+                    timeHasEnd: 2024-12-31T23:59:59Z
+                  dcatTemporalResolution: P1D
+                  admsSample:
+                  - dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/sample-csv
+                    dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/sample-csv/download
+                    dctTitle:
+                    - Sample CSV distribution
+                    dctDescription:
+                    - Sample export with a subset of the plant species observations.
+                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                  provWasGeneratedBy:
+                  - https://erasmuspark.org/activities/plant-sync
+        required: true
+      responses:
+        "200":
+          description: De dataset is vervangen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDatasetStoredResponse"
+        "400":
+          description: De DCAT-payload is ongeldig of kon niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                oneOf:
+                - $ref: "#/components/schemas/DcatDatasetPayloadValidationProblemResponse"
+                - $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                ValidatieFoutTitel:
+                  summary: Titelvalidatie faalt
+                  description: ValidatieFoutTitel
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dctTitle
+                      message: ongeldige waarde
+                ValidatieFoutThema:
+                  summary: Themavalidatie faalt
+                  description: ValidatieFoutThema
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dcatTheme
+                      message: ongeldige waarde
+                ValidatieFoutBeschrijving:
+                  summary: Beschrijvingvalidatie faalt
+                  description: ValidatieFoutBeschrijving
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dctDescription
+                      message: ongeldige waarde
+                DeserialisatieFout:
+                  summary: Ongeldige JSON
+                  description: DeserialisatieFout
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-deserialization-failed
+                    title: DCAT-payload kon niet worden geparsed
+                    status: 400
+                    detail: De DCAT-datasetpayload kon niet worden gedeserialiseerd
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_DESERIALIZATION_FAILED
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "409":
+          description: Er bestaat al een dataset met dezelfde dctIdentifier.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                DatasetBestaatAl:
+                  summary: Dubbele dctIdentifier
+                  description: DatasetBestaatAl
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-already-exists
+                    title: DCAT-dataset bestaat al
+                    status: 409
+                    detail: Er bestaat al een dataset met dezelfde dctIdentifier
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_ALREADY_EXISTS
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+    delete:
+      tags:
+      - DCAT-datasets
+      summary: Verwijder een opgeslagen DCAT-dataset
+      description: Markeert de opgeslagen DCAT-dataset als verwijderd.
+      operationId: deleteDcatDataset
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "204":
+          description: De dataset is als verwijderd gemarkeerd.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+    patch:
+      tags:
+      - DCAT-datasets
+      summary: Werk een opgeslagen DCAT-dataset gedeeltelijk bij
+      description: Past alleen de meegestuurde velden aan. Daarna controleert de API
+        de hele dataset.
+      operationId: patchDcatDataset
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Gedeeltelijke DCAT-datasetpayload met alleen de velden die aangepast
+          moeten worden.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DcatDataset"
+            examples:
+              DeelupdateRequestPayload:
+                description: DeelupdateRequestPayload
+                value:
+                  dcatVersion: 1.2.1
+                  admsVersionNotes:
+                  - Metadata field alignment with May 2026 profile.
+                  dcatContactPoint:
+                    vcardFn: Erasmuspark Open Data Team
+        required: true
+      responses:
+        "200":
+          description: De dataset is bijgewerkt.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDatasetStoredResponse"
+        "400":
+          description: De DCAT-payload is ongeldig of kon niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                oneOf:
+                - $ref: "#/components/schemas/DcatDatasetPayloadValidationProblemResponse"
+                - $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                ValidatieFoutTitel:
+                  summary: Titelvalidatie faalt
+                  description: ValidatieFoutTitel
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dctTitle
+                      message: ongeldige waarde
+                ValidatieFoutThema:
+                  summary: Themavalidatie faalt
+                  description: ValidatieFoutThema
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dcatTheme
+                      message: ongeldige waarde
+                ValidatieFoutBeschrijving:
+                  summary: Beschrijvingvalidatie faalt
+                  description: ValidatieFoutBeschrijving
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dctDescription
+                      message: ongeldige waarde
+                DeserialisatieFout:
+                  summary: Ongeldige JSON
+                  description: DeserialisatieFout
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-deserialization-failed
+                    title: DCAT-payload kon niet worden geparsed
+                    status: 400
+                    detail: De DCAT-datasetpayload kon niet worden gedeserialiseerd
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_DESERIALIZATION_FAILED
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "409":
+          description: Er bestaat al een dataset met dezelfde dctIdentifier.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                DatasetBestaatAl:
+                  summary: Dubbele dctIdentifier
+                  description: DatasetBestaatAl
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-already-exists
+                    title: DCAT-dataset bestaat al
+                    status: 409
+                    detail: Er bestaat al een dataset met dezelfde dctIdentifier
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_ALREADY_EXISTS
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/datasets/{datasetId}/publication-status:
+    get:
+      tags:
+      - DCAT-datasets
+      summary: Haal de publicatiestatus van een DCAT-dataset op
+      description: "Geeft de publicatiestatus terug. Deze status hoort niet bij DCAT,\
+        \ maar bij het record in deze API. Een dataset die je niet mag zien, geeft\
+        \ 404."
+      operationId: getDcatDatasetPublicationStatus
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: De publicatiestatus is opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDatasetMeta"
+              examples:
+                Publicatiestatus:
+                  summary: Gepubliceerde dataset
+                  description: Publicatiestatus
+                  value:
+                    publicationStatus: PUBLISHED
+                    allowedPublicationStatuses:
+                    - WITHDRAWN
+                    publishedAt: 2026-01-22T10:30:00Z
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+    put:
+      tags:
+      - DCAT-datasets
+      summary: Wijzig de publicatiestatus van een DCAT-dataset
+      description: "Zet de publicatiestatus op de meegestuurde waarde. Toegestaan:\
+        \ DRAFT naar PUBLISHED, PUBLISHED naar WITHDRAWN en WITHDRAWN naar PUBLISHED.\
+        \ De huidige status meesturen verandert niets."
+      operationId: changeDcatDatasetPublicationStatus
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DcatDatasetPublicationStatusRequest"
+        required: true
+      responses:
+        "200":
+          description: De publicatiestatus is gewijzigd of was al de opgegeven waarde.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDatasetMeta"
+              examples:
+                IngetrokkenDataset:
+                  summary: Ingetrokken dataset
+                  description: IngetrokkenDataset
+                  value:
+                    publicationStatus: WITHDRAWN
+                    allowedPublicationStatuses:
+                    - PUBLISHED
+                    publishedAt: 2026-01-22T10:30:00Z
+        "409":
+          description: De dataset kan niet naar de gevraagde status.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                OngeldigeOvergang:
+                  summary: DRAFT naar WITHDRAWN
+                  description: OngeldigeOvergang
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-invalid-publication-transition
+                    title: Ongeldige publicatiestatusovergang
+                    status: 409
+                    detail: Dataset 5aa4d627-2b5a-4b69-b8e9-7af31d1288ee kan niet
+                      overgaan van DRAFT naar WITHDRAWN
+                    instance: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee/publication-status
+                    code: DCAT_DATASET_INVALID_PUBLICATION_TRANSITION
+        "400":
+          description: De request body is ongeldig of onvolledig.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/datasets/{datasetId}/distributions/{distributionId}:
+    get:
+      tags:
+      - DCAT-distributies
+      summary: Haal een distributie van een DCAT-dataset op
+      description: "Geeft één distributie uit deze dataset terug. Een dataset die\
+        \ je niet mag zien, geeft 404: zonder authenticatie geldt dat voor elke niet-gepubliceerde\
+        \ dataset, met rol User voor die van andere organisaties."
+      operationId: getDcatDistribution
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: distributionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: De opgevraagde distributie is gevonden.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDistributionResponse"
+              examples:
+                Distributie:
+                  summary: Opgeslagen distributie
+                  description: Distributie
+                  value:
+                    id: 9f1c5f7e-9a1e-4f27-9d61-1c2f0d5a77b3
+                    dcatDistribution:
+                      dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                      dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                      dctTitle:
+                      - CSV distribution
+                      dctDescription:
+                      - CSV export of observed plant species in Erasmuspark.
+                      dctFormat: https://www.iana.org/assignments/media-types/text/csv
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+    put:
+      tags:
+      - DCAT-distributies
+      summary: Vervang een distributie van een DCAT-dataset
+      description: Vervangt de hele distributie.
+      operationId: replaceDcatDistribution
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: distributionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Volledige DCAT-distributiepayload die de bestaande distributie
+          vervangt.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DcatDistribution"
+            examples:
+              VervangendeRequestPayload:
+                description: VervangendeRequestPayload
+                value:
+                  dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                  dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                  dctTitle:
+                  - CSV distribution
+                  dctDescription:
+                  - CSV export of observed plant species in Erasmuspark.
+                  dctFormat: https://www.iana.org/assignments/media-types/text/csv
+        required: true
+      responses:
+        "200":
+          description: De distributie is vervangen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDistributionResponse"
+              examples:
+                VervangenDistributie:
+                  summary: Vervangen distributie
+                  description: VervangenDistributie
+                  value:
+                    id: 9f1c5f7e-9a1e-4f27-9d61-1c2f0d5a77b3
+                    dcatDistribution:
+                      dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                      dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                      dctTitle:
+                      - CSV distribution
+                      dctDescription:
+                      - CSV export of observed plant species in Erasmuspark.
+                      dctFormat: https://www.iana.org/assignments/media-types/text/csv
+        "400":
+          description: De request body is ongeldig of onvolledig.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+    delete:
+      tags:
+      - DCAT-distributies
+      summary: Verwijder een distributie van een DCAT-dataset
+      description: Markeert de distributie als verwijderd.
+      operationId: deleteDcatDistribution
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: distributionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "204":
+          description: De distributie is als verwijderd gemarkeerd.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/datasets:
+    get:
+      tags:
+      - DCAT-datasets
+      summary: Haal de gepubliceerde DCAT-datasets op
+      description: "Geeft een pagina DCAT-datasets terug; alleen datasets met publicationStatus\
+        \ PUBLISHED. Zie GET /api/v1/me/catalog-records voor je eigen datasets die\
+        \ nog niet gepubliceerd zijn. Maximaal 100 per pagina. Sorteren kan op createdAt,\
+        \ dctIdentifier, dctIssued, dctModified en publishedAt; standaard op createdAt,\
+        \ aflopend."
+      operationId: getAllDcatDatasets
+      parameters:
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: "Sorting criteria in the format: property,(asc|desc). Default\
+          \ sort order is ascending. Multiple sort criteria are supported."
+        required: false
+        schema:
+          type: array
+          default:
+          - "createdAt,DESC"
+          items:
+            type: string
+      responses:
+        "200":
+          description: De gepubliceerde datasets zijn opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PagedModelDcatDatasetResponse"
+        "400":
+          description: Er is gesorteerd op een onbekend veld.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+    post:
+      tags:
+      - DCAT-datasets
+      summary: Valideer en bewaar een DCAT-datasetpayload
+      description: |
+        Controleert een DCAT-datasetpayload en slaat die op. Is de payload geldig, dan krijg je een nieuwe dataset-id terug.
+        Is de payload ongeldig, dan bevat de response een foutcode en een lijst met fouten per veld.
+        Bestaat er al een dataset met dezelfde dctIdentifier, dan geeft de API 409.
+
+        Standaard slaat de API de dataset op als concept (DRAFT). Geef 'publicationStatus=PUBLISHED' mee om direct te publiceren.
+
+        Tips voor clients:
+        - Gebruik 'errors[*].code' om op een fout te reageren.
+        - Gebruik 'errors[*].path' om een fout bij het juiste veld te tonen.
+        - Toon 'errors[*].message' alleen; lees die niet uit in code.
+        - Zie GET /api/v1/error-codes voor alle foutcodes.
+      operationId: validateDcatDataset
+      parameters:
+      - name: publicationStatus
+        in: query
+        description: De status waarmee de dataset wordt opgeslagen. Standaard DRAFT;
+          PUBLISHED publiceert direct.
+        required: false
+        schema:
+          type: string
+          default: DRAFT
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - WITHDRAWN
+      requestBody:
+        description: DCAT-datasetpayload die gevalideerd en opgeslagen moet worden.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DcatDataset"
+            examples:
+              GeldigeRequestPayload:
+                description: GeldigeRequestPayload
+                value:
+                  dctIdentifier: https://erasmuspark.org/datasets/plant-species/simple
+                  dctTitle:
+                  - Erasmuspark Plant Species
+                  dctDescription:
+                  - "Dataset with observed plant species in Erasmuspark, including\
+                    \ species name and observation frequency."
+                  dctAccrualPeriodicity: http://publications.europa.eu/resource/authority/frequency/DAILY
+                  admsIdentifier:
+                  - ERASMUSPARK-PLANTS-SIMPLE
+                  dcatKeyword:
+                  - flora
+                  - plant species
+                  dcatTheme:
+                  - http://publications.europa.eu/resource/authority/data-theme/ENVI
+                  dctType: http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA
+                  dcatVersion: 1.2.0
+                  admsVersionNotes:
+                  - Metadata field alignment with April 2026 profile.
+                  dctPublisher:
+                    foafName:
+                    - Erasmuspark
+                  dctCreator:
+                  - foafName:
+                    - Erasmuspark
+                  dcatContactPoint:
+                    vcardFn: Erasmuspark Data Team
+                    vcardHasEmail: mailto:info@erasmuspark.org
+                    vcardHasUrl: https://erasmuspark.org/contact
+                  dctAccessRights: http://publications.europa.eu/resource/authority/access-right/PUBLIC
+                  admsStatus: http://publications.europa.eu/resource/authority/dataset-status/AVAILABLE
+                  dctIssued: 2026-01-22T00:00:00Z
+                  dctModified: 2026-01-22T00:00:00Z
+                  dcatDistribution:
+                  - dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                    dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                    dctTitle:
+                    - CSV distribution
+                    dctDescription:
+                    - CSV export of observed plant species in Erasmuspark.
+                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                  dcatHasVersion:
+                  - https://erasmuspark.org/datasets/plant-species/simp/versions/1.1.0
+                  dcatInSeries:
+                  - https://erasmuspark.org/datasets/plant-series
+                  dctIsReferencedBy:
+                  - https://erasmuspark.org/reports/biodiversity-2024
+                  dctProvenance:
+                  - https://erasmuspark.org/provenance/plant-observations
+                  provQualifiedAttribution:
+                  - provAgent: https://erasmuspark.org/agents/plant-volunteers
+                    provHadRole: http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode_custodian
+                  dcatQualifiedRelation:
+                  - https://erasmuspark.org/relations/plant-species-related
+                  dctRelation:
+                  - https://erasmuspark.org/datasets/plant-observations
+                  dctSource:
+                  - https://erasmuspark.org/source/plant-survey
+                  dcatSpatialResolutionInMeters: 25.5
+                  dctSpatial:
+                  - dctLocation: http://publications.europa.eu/resource/authority/country/NLD
+                    dcatCentroid: POINT (4.8489782 52.3746254)
+                  dctTemporal:
+                  - dcatStartDate: 2024-01-01
+                    dcatEndDate: 2024-12-31
+                    timeHasBeginning: 2024-01-01T00:00:00Z
+                    timeHasEnd: 2024-12-31T23:59:59Z
+                  dcatTemporalResolution: P1D
+                  admsSample:
+                  - dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/sample-csv
+                    dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/sample-csv/download
+                    dctTitle:
+                    - Sample CSV distribution
+                    dctDescription:
+                    - Sample export with a subset of the plant species observations.
+                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                  provWasGeneratedBy:
+                  - https://erasmuspark.org/activities/plant-sync
+        required: true
+      responses:
+        "201":
+          description: De DCAT-payload is geldig en opgeslagen.
+          headers:
+            Location:
+              description: URI van de aangemaakte datasetresource.
+              style: simple
+              schema:
+                type: string
+                format: uri
+                example: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDatasetStoredResponse"
+              examples:
+                GeldigePayload:
+                  summary: Aangemaakte dataset
+                  description: GeldigePayload
+                  value:
+                    id: 5aa4d627-2b5a-4b69-b8e9-7af31d1288ee
+                    dctIdentifier: https://erasmuspark.org/datasets/plant-species/simple
+        "409":
+          description: "Er bestaat al een dataset met dezelfde dctIdentifier, of de\
+            \ opgegeven publicationStatus is geen geldige beginstatus."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                DatasetBestaatAl:
+                  summary: Dubbele dctIdentifier
+                  description: DatasetBestaatAl
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-already-exists
+                    title: DCAT-dataset bestaat al
+                    status: 409
+                    detail: Er bestaat al een dataset met dezelfde dctIdentifier
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_ALREADY_EXISTS
+                OngeldigeBeginstatus:
+                  summary: Geen geldige beginstatus
+                  description: OngeldigeBeginstatus
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-invalid-publication-transition
+                    title: Ongeldige publicatiestatusovergang
+                    status: 409
+                    detail: Dataset 5aa4d627-2b5a-4b69-b8e9-7af31d1288ee kan niet
+                      overgaan van DRAFT naar WITHDRAWN
+                    instance: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee/publication-status
+                    code: DCAT_DATASET_INVALID_PUBLICATION_TRANSITION
+        "400":
+          description: De DCAT-payload is ongeldig of kon niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                oneOf:
+                - $ref: "#/components/schemas/DcatDatasetPayloadValidationProblemResponse"
+                - $ref: "#/components/schemas/ProblemResponse"
+              examples:
+                ValidatieFoutTitel:
+                  summary: Titelvalidatie faalt
+                  description: ValidatieFoutTitel
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dctTitle
+                      message: ongeldige waarde
+                ValidatieFoutThema:
+                  summary: Themavalidatie faalt
+                  description: ValidatieFoutThema
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dcatTheme
+                      message: ongeldige waarde
+                ValidatieFoutBeschrijving:
+                  summary: Beschrijvingvalidatie faalt
+                  description: ValidatieFoutBeschrijving
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-validation-failed
+                    title: DCAT-payloadvalidatie is mislukt
+                    status: 400
+                    detail: De DCAT-datasetpayload is ongeldig
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_VALIDATION_FAILED
+                    errors:
+                    - code: REQUIRED_FIELD
+                      path: dctDescription
+                      message: ongeldige waarde
+                DeserialisatieFout:
+                  summary: Ongeldige JSON
+                  description: DeserialisatieFout
+                  value:
+                    type: urn:datastore:problem:dcat-dataset-deserialization-failed
+                    title: DCAT-payload kon niet worden geparsed
+                    status: 400
+                    detail: De DCAT-datasetpayload kon niet worden gedeserialiseerd
+                    instance: /api/v1/datasets
+                    code: DCAT_DATASET_DESERIALIZATION_FAILED
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/datasets/{datasetId}/distributions:
+    get:
+      tags:
+      - DCAT-distributies
+      summary: Haal de distributies van een DCAT-dataset op
+      description: "Geeft een pagina distributies van deze dataset terug. Maximaal\
+        \ 100 per pagina. Sorteren kan op sortOrder, createdAt en dctFormat; standaard\
+        \ op sortOrder, oplopend. Een dataset die je niet mag zien, geeft 404: zonder\
+        \ authenticatie geldt dat voor elke niet-gepubliceerde dataset, met rol User\
+        \ voor die van andere organisaties."
+      operationId: getDcatDistributions
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: "Sorting criteria in the format: property,(asc|desc). Default\
+          \ sort order is ascending. Multiple sort criteria are supported."
+        required: false
+        schema:
+          type: array
+          default:
+          - "sortOrder,ASC"
+          items:
+            type: string
+      responses:
+        "200":
+          description: De distributies zijn opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PagedModelDcatDistributionResponse"
+        "400":
+          description: Er is gesorteerd op een onbekend veld.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+    post:
+      tags:
+      - DCAT-distributies
+      summary: Voeg een distributie toe aan een DCAT-dataset
+      description: Controleert de distributie en koppelt die aan de dataset. Je krijgt
+        een nieuwe distributie-id terug.
+      operationId: createDcatDistribution
+      parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: DCAT-distributiepayload die aan de dataset wordt toegevoegd.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DcatDistribution"
+            examples:
+              GeldigeRequestPayload:
+                description: GeldigeRequestPayload
+                value:
+                  dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                  dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                  dctTitle:
+                  - CSV distribution
+                  dctDescription:
+                  - CSV export of observed plant species in Erasmuspark.
+                  dctFormat: https://www.iana.org/assignments/media-types/text/csv
+        required: true
+      responses:
+        "201":
+          description: De distributie is toegevoegd.
+          headers:
+            Location:
+              description: URI van de aangemaakte distributieresource.
+              style: simple
+              schema:
+                type: string
+                format: uri
+                example: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee/distributions/9f1c5f7e-9a1e-4f27-9d61-1c2f0d5a77b3
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DcatDistributionResponse"
+              examples:
+                AangemaakteDistributie:
+                  summary: Toegevoegde distributie
+                  description: AangemaakteDistributie
+                  value:
+                    id: 9f1c5f7e-9a1e-4f27-9d61-1c2f0d5a77b3
+                    dcatDistribution:
+                      dcatAccessUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv
+                      dcatDownloadUrl: https://erasmuspark.org/datasets/plant-species/distributions/csv/download
+                      dctTitle:
+                      - CSV distribution
+                      dctDescription:
+                      - CSV export of observed plant species in Erasmuspark.
+                      dctFormat: https://www.iana.org/assignments/media-types/text/csv
+        "400":
+          description: De request body is ongeldig of onvolledig.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "403":
+          description: "De rol User of Admin ontbreekt (geen response body), of de\
+            \ dataset hoort bij een andere organisatie."
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "404":
+          description: Een resource uit het pad bestaat niet. 'code' geeft aan welke.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/auth/token:
+    post:
+      tags:
+      - Authenticatie
+      summary: Wissel een apiKey om voor een accessToken
+      description: "Inloggen voor systemen, zonder gebruiker. Stuur clientId en apiKey;\
+        \ je krijgt een accessToken terug. Stuur die mee als 'Authorization: Bearer\
+        \ <accessToken>'. Vraag een nieuwe zodra een aanroep 401 geeft."
+      operationId: token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiClientCredentials"
+        required: true
+      responses:
+        "200":
+          description: Het accessToken is aangemaakt.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AccessTokenResponse"
+        "401":
+          description: Onbekende clientId of onjuiste apiKey.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "400":
+          description: De request body is ongeldig of onvolledig.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+  /api/v1/auth/logout:
+    post:
+      tags:
+      - Authenticatie
+      summary: Log uit
+      description: Wist de sessiecookie.
+      operationId: logout
+      responses:
+        "204":
+          description: De sessiecookie is gewist.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+  /api/v1/me/catalog-records:
+    get:
+      tags:
+      - DCAT-catalog-records
+      summary: Haal de catalog-records van de ingelogde gebruiker op
+      description: "Geeft een pagina catalog-records van de organisatie van de ingelogde\
+        \ gebruiker terug. Heeft die geen organisatie, dan de eigen records. Maximaal\
+        \ 100 per pagina. Sorteren kan op listingDate, modifiedDate, primaryTopicType,\
+        \ ownerId, dctTitle en publicationStatus; standaard op listingDate, aflopend."
+      operationId: getMyCatalogRecords
+      parameters:
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: "Sorting criteria in the format: property,(asc|desc). Default\
+          \ sort order is ascending. Multiple sort criteria are supported."
+        required: false
+        schema:
+          type: array
+          default:
+          - "listingDate,DESC"
+          items:
+            type: string
+      responses:
+        "200":
+          description: De catalog-records zijn opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PagedModelCatalogRecordListing"
+        "400":
+          description: Er is gesorteerd op een onbekend veld.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/error-codes:
+    get:
+      tags:
+      - Foutcodes
+      summary: Haal de bekende foutcodes op
+      description: Geeft alle foutcodes terug die deze API kan gebruiken. Elke foutmelding
+        bevat er één in 'code'.
+      operationId: getErrorCodes
+      responses:
+        "200":
+          description: De foutcodes zijn opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ErrorCodeResponse"
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+  /api/v1/auth/user:
+    get:
+      tags:
+      - Authenticatie
+      summary: Haal de huidige gebruiker op
+      description: "Geeft de ingelogde gebruiker terug: identiteit en rollen uit CAM.\
+        \ issuedAt en expiresAt horen bij het accessToken."
+      operationId: currentUser
+      responses:
+        "200":
+          description: De ingelogde gebruiker is opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AuthenticatedUserResponse"
+        "401":
+          description: Geen geldige sessiecookie of bearer-token. Geen response body.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+      security:
+      - sessionCookie: []
+      - bearerAuth: []
+  /api/v1/auth/login:
+    get:
+      tags:
+      - Authenticatie
+      summary: Start het inloggen
+      description: "Open deze URL rechtstreeks in de browser, niet via 'Try it out'.\
+        \ Na het inloggen staat de sessiecookie klaar."
+      operationId: login
+      responses:
+        "302":
+          description: De browser wordt doorgestuurd naar de inlogpagina.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+  /api/v1/openapi.json:
+    get:
+      summary: Download de OpenAPI-specificatie
+      description: Publieke OpenAPI-specificatie van deze API.
+      responses:
+        "200":
+          description: De OpenAPI-specificatie is opgehaald.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+            Access-Control-Allow-Origin:
+              description: CORS-header voor publieke documentatie.
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.9.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+components:
+  schemas:
+    DcatContactPoint:
+      type: object
+      properties:
+        vcardFn:
+          type: string
+          minLength: 1
+        vcardHasEmail:
+          type: string
+          format: uri
+          description: "Contactadres als URI, meestal een mailto:-URI."
+          example: mailto:support@example.com
+        vcardHasUrl:
+          type: string
+          format: uri
+      required:
+      - vcardFn
+    DcatDataset:
+      type: object
+      properties:
+        dctAccessRights:
+          type: string
+          format: uri
+          minLength: 1
+          pattern: ^http://publications\.europa\.eu/resource/authority/access-right/(PUBLIC|NON_PUBLIC|RESTRICTED)$
+        dctAccrualPeriodicity:
+          type: string
+          format: uri
+        admsIdentifier:
+          type: array
+          items:
+            type: string
+            format: uri
+            minLength: 1
+        dcatapApplicableLegislation:
+          type: array
+          items:
+            type: string
+            format: uri
+        admsSample:
+          type: array
+          items:
+            $ref: "#/components/schemas/DcatDistribution"
+        admsStatus:
+          type: string
+          format: uri
+        admsVersionNotes:
+          type: array
+          items:
+            type: string
+            minLength: 1
+        dctConformsTo:
+          type: array
+          items:
+            type: string
+            format: uri
+        dcatContactPoint:
+          $ref: "#/components/schemas/DcatContactPoint"
+        dctCreator:
+          type: array
+          items:
+            $ref: "#/components/schemas/FoafAgent"
+          minItems: 1
+        dcatDistribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/DcatDistribution"
+        dctDescription:
+          type: array
+          items:
+            type: string
+            maxLength: 2000
+            minLength: 0
+          maxItems: 1
+          minItems: 1
+        dctIssued:
+          type: string
+          format: date-time
+          description: Datum (yyyy-MM-dd) of datum-tijd met tijdzone (2026-01-22T10:30:00Z).
+            Een datum-tijd zonder tijdzone wordt geweigerd. Alleen een datum wordt
+            middernacht UTC. Waarden komen terug in UTC.
+          example: 2026-01-22T10:30:00Z
+        dcatHasVersion:
+          type: array
+          items:
+            type: string
+            format: uri
+        foafPage:
+          type: array
+          items:
+            type: string
+            format: uri
+        dcatapHvdCategory:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctIdentifier:
+          type: string
+          format: uri
+        dcatInSeries:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctIsReferencedBy:
+          type: array
+          items:
+            type: string
+            format: uri
+        dcatKeyword:
+          type: array
+          items:
+            type: string
+            minLength: 1
+        dcatLandingPage:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctLanguage:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctModified:
+          type: string
+          format: date-time
+          description: Datum (yyyy-MM-dd) of datum-tijd met tijdzone (2026-01-22T10:30:00Z).
+            Een datum-tijd zonder tijdzone wordt geweigerd. Alleen een datum wordt
+            middernacht UTC. Waarden komen terug in UTC.
+          example: 2026-01-22T10:30:00Z
+        dctPublisher:
+          $ref: "#/components/schemas/FoafAgent"
+        dctProvenance:
+          type: array
+          items:
+            type: string
+            format: uri
+        provQualifiedAttribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProvQualifiedAttribution"
+        dcatQualifiedRelation:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctRelation:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctSource:
+          type: array
+          items:
+            type: string
+            format: uri
+        dcatSpatialResolutionInMeters:
+          type: number
+        dctSpatial:
+          type: array
+          description: "Geografische dekking. Geef bij voorkeur alleen dctLocation.\
+            \ Gebruik dcatBbox, dcatCentroid of locnGeometry alleen als er geen passende\
+            \ gebieds-URI is."
+          items:
+            $ref: "#/components/schemas/DctLocation"
+        dctTemporal:
+          type: array
+          items:
+            $ref: "#/components/schemas/DctPeriodOfTime"
+        dcatTemporalResolution:
+          type: string
+          description: "Duur volgens ISO 8601, bijvoorbeeld P1D, PT15M of P1Y2M3D."
+        dcatTheme:
+          type: array
+          items:
+            type: string
+            format: uri
+            minLength: 1
+            pattern: "^http://publications\\.europa\\.eu/resource/authority/data-theme/[A-Z_]+$"
+          minItems: 1
+        dctType:
+          type: string
+          format: uri
+        dcatVersion:
+          type: string
+        provWasGeneratedBy:
+          type: array
+          items:
+            type: string
+            format: uri
+        dctTitle:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          maxItems: 1
+          minItems: 1
+      required:
+      - dcatContactPoint
+      - dcatTheme
+      - dctAccessRights
+      - dctCreator
+      - dctDescription
+      - dctIdentifier
+      - dctPublisher
+      - dctTitle
+    DcatDistribution:
+      type: object
+      properties:
+        dcatAccessUrl:
+          type: string
+          format: uri
+        dcatDownloadUrl:
+          type: string
+          format: uri
+        dctTitle:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          maxItems: 1
+          minItems: 0
+        dctDescription:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          maxItems: 1
+          minItems: 0
+        dctFormat:
+          type: string
+          format: uri
+    DctLocation:
+      type: object
+      properties:
+        dctLocation:
+          type: string
+          format: uri
+          description: "URI van een gebied, bij voorkeur uit EU Vocabularies, anders\
+            \ Geonames. Bijvoorbeeld http://publications.europa.eu/resource/authority/country/NLD."
+        dcatBbox:
+          type: string
+        dcatCentroid:
+          type: string
+        locnGeometry:
+          type: string
+    DctPeriodOfTime:
+      type: object
+      properties:
+        dcatStartDate:
+          type: string
+          format: date
+        dcatEndDate:
+          type: string
+          format: date
+        timeHasBeginning:
+          type: string
+          format: date-time
+          description: Datum (yyyy-MM-dd) of datum-tijd met tijdzone (2026-01-22T10:30:00Z).
+            Een datum-tijd zonder tijdzone wordt geweigerd. Alleen een datum wordt
+            middernacht UTC. Waarden komen terug in UTC.
+          example: 2026-01-22T10:30:00Z
+        timeHasEnd:
+          type: string
+          format: date-time
+          description: Datum (yyyy-MM-dd) of datum-tijd met tijdzone (2026-01-22T10:30:00Z).
+            Een datum-tijd zonder tijdzone wordt geweigerd. Alleen een datum wordt
+            middernacht UTC. Waarden komen terug in UTC.
+          example: 2026-01-22T10:30:00Z
+    FoafAgent:
+      type: object
+      properties:
+        foafName:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          maxItems: 1
+          minItems: 1
+      required:
+      - foafName
+    ProvQualifiedAttribution:
+      type: object
+      properties:
+        provAgent:
+          type: string
+          format: uri
+          description: De organisatie of agent (prov:agent) die een rol krijgt.
+          example: https://erasmuspark.org/agents/plant-volunteers
+        provHadRole:
+          type: string
+          format: uri
+          description: "De rol (prov:hadRole) van de agent, uit de ISO 19115 RoleCode-lijst."
+          example: http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode_custodian
+      required:
+      - provAgent
+      - provHadRole
+    DcatDatasetPayloadValidationErrorResponse:
+      type: object
+      description: |
+        Eén validatiefout op één veld.
+        Gebruik 'code' in je eigen code. Toon 'message' alleen; lees die niet uit.
+      properties:
+        code:
+          type: string
+          description: |
+            De validatiecode. Zie GET /api/v1/error-codes voor alle codes.
+          enum:
+          - REQUIRED_FIELD
+          - INVALID_URI
+          - INVALID_PATTERN
+          - INVALID_DATE
+          - INVALID_DURATION
+          - INVALID_NUMERIC_VALUE
+          - INVALID_SIZE
+          - INVALID_CONTACT_POINT
+          - INVALID_FIELD_VALUE
+          - FIELD_NOT_MODIFIABLE
+          example: REQUIRED_FIELD
+        path:
+          type: string
+          description: |
+            Het pad naar het veld, met de veldnamen uit de DCAT-payload.
+          example: dctTitle
+        message:
+          type: string
+          description: Uitleg van de fout. Alleen om te tonen; lees deze tekst niet
+            uit in code.
+          example: ongeldige waarde
+    DcatDatasetPayloadValidationProblemResponse:
+      type: object
+      description: |
+        Response bij een ongeldige DCAT-payload.
+        Gebruik 'code' voor de fout als geheel en 'errors[*].code' plus 'errors[*].path' per veld.
+      properties:
+        type:
+          type: string
+          description: Problem type-URI.
+          example: urn:datastore:problem:dcat-dataset-validation-failed
+        title:
+          type: string
+          description: Korte probleemtitel.
+          example: DCAT-payloadvalidatie is mislukt
+        status:
+          type: integer
+          format: int32
+          description: HTTP-statuscode.
+          example: 400
+        detail:
+          type: string
+          description: Gedetailleerde probleembeschrijving.
+          example: De DCAT-datasetpayload is ongeldig
+        instance:
+          type: string
+          description: URI van deze ene fout.
+          example: /api/v1/datasets
+        code:
+          type: string
+          description: De foutcode van de response als geheel.
+          example: DCAT_DATASET_VALIDATION_FAILED
+        errors:
+          type: array
+          description: |
+            De fouten per veld. Gebruik 'path' om de fout bij het juiste veld te tonen.
+          items:
+            $ref: "#/components/schemas/DcatDatasetPayloadValidationErrorResponse"
+            description: |
+              De fouten per veld. Gebruik 'path' om de fout bij het juiste veld te tonen.
+    ProblemResponse:
+      type: object
+      description: |
+        Foutresponse volgens RFC 9457, met een extra veld 'code'.
+        Gebruik 'code' in je eigen code; 'title' en 'detail' zijn alleen om te tonen.
+        Zie GET /api/v1/error-codes voor alle codes.
+      properties:
+        type:
+          type: string
+          description: Problem type-URI.
+          example: urn:datastore:problem:dcat-dataset-not-found
+        title:
+          type: string
+          description: Korte titel van de fout.
+          example: DCAT-dataset niet gevonden
+        status:
+          type: integer
+          format: int32
+          description: HTTP-statuscode.
+          example: 404
+        detail:
+          type: string
+          description: Uitleg van de fout.
+          example: Er bestaat geen dataset met id 5aa4d627-2b5a-4b69-b8e9-7af31d1288ee
+        instance:
+          type: string
+          description: URI van deze ene fout.
+          example: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee
+        code:
+          type: string
+          description: De foutcode van deze response.
+          example: DCAT_DATASET_NOT_FOUND
+    DcatDatasetStoredResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        dctIdentifier:
+          type: string
+          format: uri
+    DcatDatasetPublicationStatusRequest:
+      type: object
+      properties:
+        publicationStatus:
+          type: string
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - WITHDRAWN
+      required:
+      - publicationStatus
+    DcatDatasetMeta:
+      type: object
+      description: Gegevens buiten DCAT. Kan groeien zonder nieuwe API-versie; negeer
+        onbekende velden.
+      properties:
+        publicationStatus:
+          type: string
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - WITHDRAWN
+        allowedPublicationStatuses:
+          type: array
+          description: Stuur er een van naar PUT /publication-status; leeg als dat
+            niet kan.
+          items:
+            type: string
+            enum:
+            - DRAFT
+            - PUBLISHED
+            - WITHDRAWN
+        publishedAt:
+          type: string
+          format: date-time
+          description: Blijft behouden na intrekken.
+    DcatDistributionResponse:
+      type: object
+      description: "Een opgeslagen distributie: het DCAT-record plus de distributie-id."
+      properties:
+        id:
+          type: string
+          format: uuid
+        dcatDistribution:
+          $ref: "#/components/schemas/DcatDistribution"
+    ApiClientCredentials:
+      type: object
+      properties:
+        clientId:
+          type: string
+          example: test-user
+          minLength: 1
+        apiKey:
+          type: string
+          minLength: 1
+      required:
+      - apiKey
+      - clientId
+    AccessTokenResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        tokenType:
+          type: string
+        expiresIn:
+          type: integer
+          format: int64
+    CatalogRecordListing:
+      type: object
+      description: "Eén regel van het overzicht: het DCAT-record plus de gegevens\
+        \ eromheen."
+      properties:
+        id:
+          type: string
+          format: uuid
+        dcatCatalogRecord:
+          $ref: "#/components/schemas/DcatCatalogRecord"
+        meta:
+          $ref: "#/components/schemas/CatalogRecordMeta"
+    CatalogRecordMeta:
+      type: object
+      description: Gegevens buiten DCAT. Kan groeien zonder nieuwe API-versie; negeer
+        onbekende velden.
+      properties:
+        primaryTopicType:
+          type: string
+          description: Bepaalt het basispad van de acties.
+          enum:
+          - DATASET
+          - DATASERVICE
+          - DATASETSERIES
+        primaryTopicId:
+          type: string
+          format: uuid
+          description: De resource binnen dat basispad.
+        ownerId:
+          type: string
+          description: De gebruiker die het item heeft aangemaakt.
+        publicationStatus:
+          type: string
+          description: De publicatiestatus van de resource. Bepaalt of publiceren
+            of depubliceren kan.
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - WITHDRAWN
+        allowedPublicationStatuses:
+          type: array
+          description: De statussen waar dit item nu naartoe mag; leeg als dat niet
+            kan. Stuur er een van naar PUT /publication-status.
+          items:
+            type: string
+            enum:
+            - DRAFT
+            - PUBLISHED
+            - WITHDRAWN
+    DcatCatalogRecord:
+      type: object
+      description: dcat:CatalogRecord volgens DCAT-AP-NL 3.0. Alles buiten die standaard
+        staat onder meta.
+      properties:
+        dctTitle:
+          type: array
+          description: dct:title — titel van de gecatalogiseerde resource.
+          items:
+            type: string
+        dcatListingDate:
+          type: string
+          format: date-time
+          description: dcat:listingDate — opname in de catalogus.
+        dctModified:
+          type: string
+          format: date-time
+          description: "dct:modified — laatste wijziging van de resource. Niet hetzelfde\
+            \ als dct:modified op de dataset, die de bronhouder aanlevert."
+    PageMetadata:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+    PagedModelCatalogRecordListing:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: "#/components/schemas/CatalogRecordListing"
+        page:
+          $ref: "#/components/schemas/PageMetadata"
+    ErrorCodeResponse:
+      type: object
+      description: Beschrijving van een foutcode.
+      properties:
+        code:
+          type: string
+          description: De foutcode.
+          example: INVALID_PATTERN
+        category:
+          type: string
+          description: Soort foutcode.
+          example: VALIDATION
+        description:
+          type: string
+          description: Uitleg van de foutcode.
+          example: Korte uitleg van de foutcode
+        httpStatus:
+          type: integer
+          format: int32
+          description: HTTP-status waarbij deze code meestal voorkomt.
+          example: 400
+        problemType:
+          type: string
+          description: Problem type-URI die bij deze code hoort.
+          example: urn:datastore:problem:dcat-dataset-validation-failed
+        path:
+          type: string
+          description: "Pad in de DCAT-payload, bij fouten op een veld."
+          example: dcatTheme
+    DcatDatasetResponse:
+      type: object
+      description: "Een opgeslagen dataset: het DCAT-record plus de gegevens eromheen."
+      properties:
+        id:
+          type: string
+          format: uuid
+        dcatDataset:
+          $ref: "#/components/schemas/DcatDataset"
+        meta:
+          $ref: "#/components/schemas/DcatDatasetMeta"
+    PagedModelDcatDatasetResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: "#/components/schemas/DcatDatasetResponse"
+        page:
+          $ref: "#/components/schemas/PageMetadata"
+    PagedModelDcatDistributionResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: "#/components/schemas/DcatDistributionResponse"
+        page:
+          $ref: "#/components/schemas/PageMetadata"
+    AuthenticatedUserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        uniqueName:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        organisationId:
+          type: string
+        authorities:
+          type: array
+          items:
+            type: string
+        issuedAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      description: Sessiecookie die na het inloggen wordt gezet; de browser stuurt
+        hem vanzelf mee.
+      name: DATASTORE_SESSION
+      in: cookie
+    bearerAuth:
+      type: http
+      description: "accessToken uit POST /api/v1/auth/token. Stuur mee als 'Authorization:\
+        \ Bearer <accessToken>'."
+      scheme: bearer
+      bearerFormat: JWT
