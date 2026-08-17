@@ -3120,7 +3120,8 @@
         "properties" : {
           "publicationStatus" : {
             "type" : "string",
-            "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ]
+            "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ],
+            "example" : "PUBLISHED"
           }
         },
         "required" : [ "publicationStatus" ]
