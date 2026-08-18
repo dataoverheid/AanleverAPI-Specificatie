@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aanlever API - specificatie</title>
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.32.13/swagger-ui.css">
+  <style>
+    body { margin: 0; }
+    .alpha-banner {
+      background: #b45309;
+      color: #fff;
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 12px 20px;
+    }
+    .alpha-banner a { color: #fff; }
+  </style>
+</head>
+<body>
+  <p class="alpha-banner">
+    <strong>Alpha.</strong> Deze API is in ontwikkeling. De specificatie kan nog wijzigen, ook op
+    manieren die bestaande integraties breken.
+    Zie het <a href="https://github.com/dataoverheid/AanleverAPI-Specificatie/blob/main/CHANGELOG.md">changelog</a>
+    voor wijzigingen.
+  </p>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist@5.32.13/swagger-ui-bundle.js" crossorigin></script>
+  <script>
+    window.onload = () => {
+      SwaggerUIBundle({
+        url: './openapi.json',
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        supportedSubmitMethods: [],
+        defaultModelsExpandDepth: 0,
+        docExpansion: 'list'
+      });
+    };
+  </script>
+</body>
+</html>

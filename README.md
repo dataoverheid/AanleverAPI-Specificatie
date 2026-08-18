@@ -3,6 +3,7 @@
 De Aanlever API neemt DCAT-metadata over datasets in ontvangst, valideert die en bewaart die in de
 datastore van data.overheid.nl. Deze repository bevat de specificatie, niet de implementatie.
 
+- **Swagger UI**: https://dataoverheid.github.io/AanleverAPI-Specificatie/
 - **OpenAPI**: [`openapi.yaml`](openapi.yaml) of [`openapi.json`](openapi.json)
 - **Wijzigingen**: [`CHANGELOG.md`](CHANGELOG.md)
 
@@ -78,6 +79,7 @@ bevatten daarnaast een `errors`-lijst met per fout een `code` en het `path` in d
 | --- | --- |
 | `openapi.yaml` | De OpenAPI 3.1-specificatie, prettig leesbaar op GitHub |
 | `openapi.json` | Dezelfde specificatie in JSON, voor tooling |
+| `index.html` | Swagger UI, gepubliceerd via GitHub Pages |
 | `CHANGELOG.md` | Wijzigingen per versie |
 
 Beide specificatiebestanden zijn onbewerkte kopieën van wat de backend publiceert. 
