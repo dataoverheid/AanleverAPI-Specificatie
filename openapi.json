@@ -8,7 +8,7 @@
       "url" : "https://data.overheid.nl",
       "email" : "opendata@overheid.nl"
     },
-    "version" : "0.10.0"
+    "version" : "0.11.0"
   },
   "servers" : [ {
     "url" : "/",
@@ -54,7 +54,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -73,7 +73,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -92,7 +92,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -112,6 +112,15 @@
         "description" : "Vervangt de hele opgeslagen DCAT-dataset.",
         "operationId" : "replaceDcatDataset",
         "parameters" : [ {
+          "name" : "version",
+          "in" : "query",
+          "description" : "De versie uit meta.version.",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
           "name" : "datasetId",
           "in" : "path",
           "required" : true,
@@ -211,7 +220,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -230,7 +239,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -318,7 +327,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -330,7 +339,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -349,7 +358,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -362,13 +371,13 @@
             }
           },
           "409" : {
-            "description" : "Er bestaat al een dataset met dezelfde dctIdentifier.",
+            "description" : "De dataset is gewijzigd sinds deze versie werd opgehaald, of er bestaat al een dataset met dezelfde dctIdentifier.",
             "headers" : {
               "API-Version" : {
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -378,6 +387,19 @@
                   "$ref" : "#/components/schemas/ProblemResponse"
                 },
                 "examples" : {
+                  "VersieConflict" : {
+                    "summary" : "Dataset is inmiddels gewijzigd",
+                    "description" : "VersieConflict",
+                    "value" : {
+                      "type" : "urn:datastore:problem:dcat-dataset-version-conflict",
+                      "title" : "Dataset is inmiddels gewijzigd",
+                      "status" : 409,
+                      "detail" : "De dataset is gewijzigd sinds versie 4 werd opgehaald. Haal de actuele dataset op en probeer het opnieuw.",
+                      "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
+                      "code" : "DCAT_DATASET_VERSION_CONFLICT",
+                      "currentVersion" : 5
+                    }
+                  },
                   "DatasetBestaatAl" : {
                     "summary" : "Dubbele dctIdentifier",
                     "description" : "DatasetBestaatAl",
@@ -394,6 +416,39 @@
               }
             }
           },
+          "428" : {
+            "description" : "De queryparameter version ontbreekt.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.11.0"
+                }
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemResponse"
+                },
+                "examples" : {
+                  "VersieOntbreekt" : {
+                    "summary" : "Zonder version",
+                    "description" : "VersieOntbreekt",
+                    "value" : {
+                      "type" : "urn:datastore:problem:dcat-dataset-version-required",
+                      "title" : "Versie ontbreekt",
+                      "status" : 428,
+                      "detail" : "Geef de queryparameter version mee met de waarde uit meta.version",
+                      "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
+                      "code" : "DCAT_DATASET_VERSION_REQUIRED"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "500" : {
             "description" : "Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.",
             "headers" : {
@@ -401,7 +456,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -442,7 +497,40 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "De dataset is gewijzigd sinds deze versie werd opgehaald.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.11.0"
+                }
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemResponse"
+                },
+                "examples" : {
+                  "GelijktijdigOpgeslagen" : {
+                    "summary" : "Iemand anders schreef tegelijk",
+                    "description" : "GelijktijdigOpgeslagen",
+                    "value" : {
+                      "type" : "urn:datastore:problem:dcat-dataset-version-conflict",
+                      "title" : "Dataset is inmiddels gewijzigd",
+                      "status" : 409,
+                      "detail" : "De dataset is gewijzigd sinds deze versie werd opgehaald. Haal de actuele dataset op en probeer het opnieuw.",
+                      "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
+                      "code" : "DCAT_DATASET_VERSION_CONFLICT"
+                    }
+                  }
                 }
               }
             }
@@ -454,7 +542,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -466,7 +554,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -485,7 +573,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -504,7 +592,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -529,6 +617,15 @@
         "description" : "Past alleen de meegestuurde velden aan. Daarna controleert de API de hele dataset.",
         "operationId" : "patchDcatDataset",
         "parameters" : [ {
+          "name" : "version",
+          "in" : "query",
+          "description" : "De versie uit meta.version.",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
           "name" : "datasetId",
           "in" : "path",
           "required" : true,
@@ -568,7 +665,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -587,7 +684,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -675,7 +772,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -687,7 +784,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -706,7 +803,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -719,13 +816,13 @@
             }
           },
           "409" : {
-            "description" : "Er bestaat al een dataset met dezelfde dctIdentifier.",
+            "description" : "De dataset is gewijzigd sinds deze versie werd opgehaald, of er bestaat al een dataset met dezelfde dctIdentifier.",
             "headers" : {
               "API-Version" : {
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -735,6 +832,19 @@
                   "$ref" : "#/components/schemas/ProblemResponse"
                 },
                 "examples" : {
+                  "VersieConflict" : {
+                    "summary" : "Dataset is inmiddels gewijzigd",
+                    "description" : "VersieConflict",
+                    "value" : {
+                      "type" : "urn:datastore:problem:dcat-dataset-version-conflict",
+                      "title" : "Dataset is inmiddels gewijzigd",
+                      "status" : 409,
+                      "detail" : "De dataset is gewijzigd sinds versie 4 werd opgehaald. Haal de actuele dataset op en probeer het opnieuw.",
+                      "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
+                      "code" : "DCAT_DATASET_VERSION_CONFLICT",
+                      "currentVersion" : 5
+                    }
+                  },
                   "DatasetBestaatAl" : {
                     "summary" : "Dubbele dctIdentifier",
                     "description" : "DatasetBestaatAl",
@@ -751,6 +861,39 @@
               }
             }
           },
+          "428" : {
+            "description" : "De queryparameter version ontbreekt.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.11.0"
+                }
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemResponse"
+                },
+                "examples" : {
+                  "VersieOntbreekt" : {
+                    "summary" : "Zonder version",
+                    "description" : "VersieOntbreekt",
+                    "value" : {
+                      "type" : "urn:datastore:problem:dcat-dataset-version-required",
+                      "title" : "Versie ontbreekt",
+                      "status" : 428,
+                      "detail" : "Geef de queryparameter version mee met de waarde uit meta.version",
+                      "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
+                      "code" : "DCAT_DATASET_VERSION_REQUIRED"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "500" : {
             "description" : "Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.",
             "headers" : {
@@ -758,7 +901,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -801,7 +944,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -817,7 +960,8 @@
                     "value" : {
                       "publicationStatus" : "PUBLISHED",
                       "allowedPublicationStatuses" : [ "WITHDRAWN" ],
-                      "publishedAt" : "2026-01-22T10:30:00Z"
+                      "publishedAt" : "2026-01-22T10:30:00Z",
+                      "version" : 4
                     }
                   }
                 }
@@ -831,7 +975,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -850,7 +994,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -896,7 +1040,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -912,7 +1056,8 @@
                     "value" : {
                       "publicationStatus" : "WITHDRAWN",
                       "allowedPublicationStatuses" : [ "PUBLISHED" ],
-                      "publishedAt" : "2026-01-22T10:30:00Z"
+                      "publishedAt" : "2026-01-22T10:30:00Z",
+                      "version" : 5
                     }
                   }
                 }
@@ -920,13 +1065,13 @@
             }
           },
           "409" : {
-            "description" : "De dataset kan niet naar de gevraagde status.",
+            "description" : "De dataset kan niet naar de gevraagde status, of is gewijzigd sinds deze versie werd opgehaald.",
             "headers" : {
               "API-Version" : {
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -947,6 +1092,18 @@
                       "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee/publication-status",
                       "code" : "DCAT_DATASET_INVALID_PUBLICATION_TRANSITION"
                     }
+                  },
+                  "GelijktijdigOpgeslagen" : {
+                    "summary" : "Iemand anders schreef tegelijk",
+                    "description" : "GelijktijdigOpgeslagen",
+                    "value" : {
+                      "type" : "urn:datastore:problem:dcat-dataset-version-conflict",
+                      "title" : "Dataset is inmiddels gewijzigd",
+                      "status" : 409,
+                      "detail" : "De dataset is gewijzigd sinds deze versie werd opgehaald. Haal de actuele dataset op en probeer het opnieuw.",
+                      "instance" : "/api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
+                      "code" : "DCAT_DATASET_VERSION_CONFLICT"
+                    }
                   }
                 }
               }
@@ -959,7 +1116,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -978,7 +1135,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -990,7 +1147,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1009,7 +1166,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1028,7 +1185,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1079,7 +1236,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1114,7 +1271,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1133,7 +1290,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1200,7 +1357,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1235,7 +1392,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1254,7 +1411,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -1266,7 +1423,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1285,7 +1442,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1304,7 +1461,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1353,7 +1510,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -1365,7 +1522,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -1377,7 +1534,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1396,7 +1553,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1415,7 +1572,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1482,7 +1639,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1501,7 +1658,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1520,7 +1677,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1651,7 +1808,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1666,7 +1823,8 @@
                     "description" : "GeldigePayload",
                     "value" : {
                       "id" : "5aa4d627-2b5a-4b69-b8e9-7af31d1288ee",
-                      "dctIdentifier" : "https://erasmuspark.org/datasets/plant-species/simple"
+                      "dctIdentifier" : "https://erasmuspark.org/datasets/plant-species/simple",
+                      "version" : 0
                     }
                   }
                 }
@@ -1680,7 +1838,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1725,7 +1883,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1813,7 +1971,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -1825,7 +1983,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1844,7 +2002,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1919,7 +2077,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1938,7 +2096,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1957,7 +2115,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -1976,7 +2134,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2044,7 +2202,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2079,7 +2237,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2098,7 +2256,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -2110,7 +2268,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2129,7 +2287,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2148,7 +2306,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2261,7 +2419,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2280,7 +2438,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2299,7 +2457,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2338,7 +2496,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2357,7 +2515,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -2369,7 +2527,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2388,7 +2546,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2417,7 +2575,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -2429,7 +2587,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2491,7 +2649,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2510,7 +2668,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2529,7 +2687,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -2541,7 +2699,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2575,7 +2733,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2597,7 +2755,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2626,7 +2784,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2645,7 +2803,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -2657,7 +2815,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2691,7 +2849,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             }
@@ -2703,7 +2861,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -2730,7 +2888,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               },
               "Access-Control-Allow-Origin" : {
@@ -2756,7 +2914,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.10.0"
+                  "example" : "0.11.0"
                 }
               }
             },
@@ -3263,6 +3421,12 @@
           "dctIdentifier" : {
             "type" : "string",
             "format" : "uri"
+          },
+          "version" : {
+            "type" : "integer",
+            "format" : "int64",
+            "description" : "De meta.version na deze bewerking.",
+            "example" : 5
           }
         }
       },
@@ -3297,6 +3461,12 @@
             "type" : "string",
             "format" : "date-time",
             "description" : "Blijft behouden na intrekken."
+          },
+          "version" : {
+            "type" : "integer",
+            "format" : "int64",
+            "description" : "Stuur deze waarde mee als queryparameter version bij PUT en PATCH.",
+            "example" : 4
           }
         }
       },

@@ -5,6 +5,25 @@ Wijzigingen in de Aanlever API. Opmaak volgens [Keep a Changelog](https://keepac
 Tijdens de alpha kunnen breaking changes zonder deprecatietermijn voorkomen. Ze staan hier onder
 **Breaking**, zodat je voor het bijwerken van een integratie ziet wat je moet aanpassen.
 
+## [0.11.0] - 2026-09-08
+
+### Breaking
+
+- `PUT /api/v1/datasets/{datasetId}` en `PATCH /api/v1/datasets/{datasetId}` vereisen de
+  queryparameter `version` met de waarde uit `meta.version` van de opgehaalde dataset. Ontbreekt die,
+  dan volgt `428` met code `DCAT_DATASET_VERSION_REQUIRED`; wijkt die af van de opgeslagen versie,
+  dan volgt `409` met code `DCAT_DATASET_VERSION_CONFLICT` en het veld `currentVersion`.
+- `DELETE /api/v1/datasets/{datasetId}` en `PUT /api/v1/datasets/{datasetId}/publication-status`
+  geven `409` met code `DCAT_DATASET_VERSION_CONFLICT` als de dataset intussen is gewijzigd.
+
+### Toegevoegd
+
+- `meta.version` bij elke dataset: het versienummer dat je meestuurt bij een volgende `PUT` of
+  `PATCH`. Het loopt op bij elke wijziging.
+- `version` in de response van aanleveren, vervangen en bijwerken: de versie na die bewerking.
+- Foutcodes `DCAT_DATASET_VERSION_REQUIRED` en `DCAT_DATASET_VERSION_CONFLICT` in
+  `GET /api/v1/error-codes`.
+
 ## [0.10.0] - 2026-09-03
 
 ### Toegevoegd

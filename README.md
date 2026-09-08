@@ -16,7 +16,7 @@ productie neemt.
 ## Versionering
 
 Het pad bevat de major versie (`/api/v1`). Elke response bevat een `API-Version`-header met de
-volledige semver-versie, bijvoorbeeld `0.9.0`. De API volgt de
+volledige semver-versie, bijvoorbeeld `0.11.0`. De API volgt de
 [NLGov REST API Design Rules 2.1.0](https://gitdocumentatie.logius.nl/publicatie/api/adr/2.1.0/).
 
 ## Authenticatie
@@ -52,6 +52,22 @@ Toegestane overgangen zijn `DRAFT` -> `PUBLISHED`, `PUBLISHED` -> `WITHDRAWN` en
 `PUBLISHED`; elke andere geeft `409`. `WITHDRAWN` is een beheeractie, geen stap in het
 aanleverproces. `publishedAt` houdt het tijdstip van de eerste publicatie vast. Per catalog-record
 staat in `allowedPublicationStatuses` wat op dat moment mogelijk is.
+
+## Gelijktijdig wijzigen
+
+Elke dataset heeft een `meta.version` die oploopt bij elke wijziging. Stuur die waarde mee als
+queryparameter bij het wijzigen:
+
+```
+PUT /api/v1/datasets/{datasetId}?version=4
+PATCH /api/v1/datasets/{datasetId}?version=4
+```
+
+Zonder `version` volgt `428` met code `DCAT_DATASET_VERSION_REQUIRED`. Wijkt de meegestuurde versie
+af van de opgeslagen versie, dan volgt `409` met code `DCAT_DATASET_VERSION_CONFLICT` en het veld
+`currentVersion`; haal de dataset dan opnieuw op en probeer het opnieuw. Ook `DELETE` en het wijzigen
+van de publicatiestatus geven `409` met die code als de dataset intussen is gewijzigd. Aanleveren,
+vervangen en bijwerken geven de nieuwe versie terug in het veld `version`.
 
 ## Fouten
 
