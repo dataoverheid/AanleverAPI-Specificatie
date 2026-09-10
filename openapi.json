@@ -8,7 +8,7 @@
       "url" : "https://data.overheid.nl",
       "email" : "opendata@overheid.nl"
     },
-    "version" : "0.11.0"
+    "version" : "0.12.0"
   },
   "servers" : [ {
     "url" : "/",
@@ -54,7 +54,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -73,7 +73,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -92,7 +92,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -220,7 +220,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -239,7 +239,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -327,7 +327,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -339,7 +339,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -358,7 +358,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -377,7 +377,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -423,7 +423,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -456,7 +456,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -497,7 +497,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -509,7 +509,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -542,7 +542,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -554,7 +554,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -573,7 +573,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -592,7 +592,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -665,7 +665,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -684,7 +684,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -772,7 +772,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -784,7 +784,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -803,7 +803,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -822,7 +822,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -868,7 +868,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -901,7 +901,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -944,7 +944,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -975,7 +975,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -994,7 +994,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1040,7 +1040,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1071,7 +1071,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1116,7 +1116,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1135,7 +1135,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -1147,7 +1147,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1166,7 +1166,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1185,7 +1185,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1236,7 +1236,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1271,7 +1271,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1290,7 +1290,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1357,7 +1357,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1392,7 +1392,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1411,7 +1411,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -1423,7 +1423,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1442,7 +1442,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1461,7 +1461,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1510,7 +1510,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -1522,7 +1522,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -1534,7 +1534,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1553,7 +1553,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1572,7 +1572,147 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
+                }
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "sessionCookie" : [ ]
+        }, {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/me/catalog-records/search" : {
+      "post" : {
+        "tags" : [ "DCAT-catalog-records" ],
+        "summary" : "Zoek in de catalog-records van de ingelogde gebruiker",
+        "description" : "Zoekt in de catalog-records van GET /api/v1/me/catalog-records, met dezelfde paginering en\nsortering. Alle filters gelden tegelijk; binnen een lijst matcht een van de waarden.\n",
+        "operationId" : "searchMyCatalogRecords",
+        "parameters" : [ {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Zero-based page index (0..N)",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0,
+            "minimum" : 0
+          }
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "The size of the page to be returned",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "default" : 20,
+            "minimum" : 1
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "default" : [ "listingDate,DESC" ],
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CatalogRecordSearchRequest"
+              },
+              "examples" : {
+                "Zoekvraag" : {
+                  "summary" : "Alle filters; vul je eigen waarden in",
+                  "description" : "Zoekvraag",
+                  "value" : {
+                    "query" : "plantensoorten",
+                    "primaryTopicTypes" : [ "DATASET" ],
+                    "publicationStatuses" : [ "DRAFT" ],
+                    "modifiedFrom" : "2026-01-01T00:00:00Z",
+                    "modifiedTo" : "2026-12-31T23:59:59Z"
+                  }
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "De gevonden catalog-records zijn opgehaald.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.12.0"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PagedModelCatalogRecordListing"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "De zoekvraag is ongeldig, of er is gesorteerd op een onbekend veld.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.12.0"
+                }
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemResponse"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Geen geldige sessiecookie of bearer-token. Geen response body.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.12.0"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.",
+            "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1639,7 +1779,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1658,7 +1798,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1677,7 +1817,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1808,7 +1948,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1838,7 +1978,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1883,7 +2023,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -1971,7 +2111,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -1983,7 +2123,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2002,7 +2142,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2077,7 +2217,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2096,7 +2236,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2115,7 +2255,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2134,7 +2274,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2202,7 +2342,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2237,7 +2377,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2256,7 +2396,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -2268,7 +2408,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2287,7 +2427,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2306,7 +2446,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2419,7 +2559,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2438,7 +2578,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2457,7 +2597,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2496,7 +2636,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2515,7 +2655,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -2527,7 +2667,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2546,7 +2686,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2575,7 +2715,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -2587,7 +2727,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2649,7 +2789,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2668,7 +2808,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2687,7 +2827,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -2699,7 +2839,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2733,7 +2873,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2755,7 +2895,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2784,7 +2924,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2803,7 +2943,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -2815,7 +2955,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2849,7 +2989,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             }
@@ -2861,7 +3001,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2884,18 +3024,18 @@
           "200" : {
             "description" : "De OpenAPI-specificatie is opgehaald.",
             "headers" : {
-              "API-Version" : {
-                "description" : "Volledige API-versie volgens semver.",
-                "schema" : {
-                  "type" : "string",
-                  "example" : "0.11.0"
-                }
-              },
               "Access-Control-Allow-Origin" : {
                 "description" : "CORS-header voor publieke documentatie.",
                 "schema" : {
                   "type" : "string",
                   "example" : "*"
+                }
+              },
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -2914,7 +3054,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.11.0"
+                  "example" : "0.12.0"
                 }
               }
             },
@@ -3483,6 +3623,153 @@
           }
         }
       },
+      "CatalogRecordSearchRequest" : {
+        "type" : "object",
+        "properties" : {
+          "query" : {
+            "type" : "string",
+            "description" : "Vrije tekst. Zoekt hoofdletterongevoelig in titel, beschrijving en trefwoorden van de resource waar het catalog-record bij hoort.",
+            "example" : "plantensoorten",
+            "maxLength" : 200,
+            "minLength" : 0
+          },
+          "primaryTopicTypes" : {
+            "type" : "array",
+            "description" : "Catalog-records van een van deze soorten resources.",
+            "items" : {
+              "type" : "string",
+              "enum" : [ "DATASET", "DATASERVICE", "DATASETSERIES" ]
+            }
+          },
+          "publicationStatuses" : {
+            "type" : "array",
+            "description" : "Catalog-records waarvan de resource een van deze publicatiestatussen heeft.",
+            "items" : {
+              "type" : "string",
+              "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ]
+            }
+          },
+          "modifiedFrom" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "Catalog-records met dctModified op of na dit moment.",
+            "example" : "2026-01-22T10:30:00Z"
+          },
+          "modifiedTo" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "Catalog-records met dctModified op of voor dit moment.",
+            "example" : "2026-06-30T23:59:59Z"
+          }
+        }
+      },
+      "CatalogRecordListing" : {
+        "type" : "object",
+        "description" : "Eén regel van het overzicht: het DCAT-record plus de gegevens eromheen.",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "dcatCatalogRecord" : {
+            "$ref" : "#/components/schemas/DcatCatalogRecord"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/CatalogRecordMeta"
+          }
+        }
+      },
+      "CatalogRecordMeta" : {
+        "type" : "object",
+        "description" : "Gegevens buiten DCAT. Kan groeien zonder nieuwe API-versie; negeer onbekende velden.",
+        "properties" : {
+          "primaryTopicType" : {
+            "type" : "string",
+            "description" : "Bepaalt het basispad van de acties.",
+            "enum" : [ "DATASET", "DATASERVICE", "DATASETSERIES" ]
+          },
+          "primaryTopicId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "description" : "De resource binnen dat basispad."
+          },
+          "ownerId" : {
+            "type" : "string",
+            "description" : "De gebruiker die het item heeft aangemaakt."
+          },
+          "publicationStatus" : {
+            "type" : "string",
+            "description" : "De publicatiestatus van de resource. Bepaalt of publiceren of depubliceren kan.",
+            "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ]
+          },
+          "allowedPublicationStatuses" : {
+            "type" : "array",
+            "description" : "De statussen waar dit item nu naartoe mag; leeg als dat niet kan. Stuur er een van naar PUT /publication-status.",
+            "items" : {
+              "type" : "string",
+              "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ]
+            }
+          }
+        }
+      },
+      "DcatCatalogRecord" : {
+        "type" : "object",
+        "description" : "dcat:CatalogRecord volgens DCAT-AP-NL 3.0. Alles buiten die standaard staat onder meta.",
+        "properties" : {
+          "dctTitle" : {
+            "type" : "array",
+            "description" : "dct:title — titel van de gecatalogiseerde resource.",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "dcatListingDate" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "dcat:listingDate — opname in de catalogus."
+          },
+          "dctModified" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "dct:modified — laatste wijziging van de resource. Niet hetzelfde als dct:modified op de dataset, die de bronhouder aanlevert."
+          }
+        }
+      },
+      "PageMetadata" : {
+        "type" : "object",
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "number" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "totalElements" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "totalPages" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "PagedModelCatalogRecordListing" : {
+        "type" : "object",
+        "properties" : {
+          "content" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CatalogRecordListing"
+            }
+          },
+          "page" : {
+            "$ref" : "#/components/schemas/PageMetadata"
+          }
+        }
+      },
       "DcatDatasetSearchRequest" : {
         "type" : "object",
         "properties" : {
@@ -3577,27 +3864,6 @@
           }
         }
       },
-      "PageMetadata" : {
-        "type" : "object",
-        "properties" : {
-          "size" : {
-            "type" : "integer",
-            "format" : "int64"
-          },
-          "number" : {
-            "type" : "integer",
-            "format" : "int64"
-          },
-          "totalElements" : {
-            "type" : "integer",
-            "format" : "int64"
-          },
-          "totalPages" : {
-            "type" : "integer",
-            "format" : "int64"
-          }
-        }
-      },
       "PagedModelDcatDatasetResponse" : {
         "type" : "object",
         "properties" : {
@@ -3639,92 +3905,6 @@
           "expiresIn" : {
             "type" : "integer",
             "format" : "int64"
-          }
-        }
-      },
-      "CatalogRecordListing" : {
-        "type" : "object",
-        "description" : "Eén regel van het overzicht: het DCAT-record plus de gegevens eromheen.",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "dcatCatalogRecord" : {
-            "$ref" : "#/components/schemas/DcatCatalogRecord"
-          },
-          "meta" : {
-            "$ref" : "#/components/schemas/CatalogRecordMeta"
-          }
-        }
-      },
-      "CatalogRecordMeta" : {
-        "type" : "object",
-        "description" : "Gegevens buiten DCAT. Kan groeien zonder nieuwe API-versie; negeer onbekende velden.",
-        "properties" : {
-          "primaryTopicType" : {
-            "type" : "string",
-            "description" : "Bepaalt het basispad van de acties.",
-            "enum" : [ "DATASET", "DATASERVICE", "DATASETSERIES" ]
-          },
-          "primaryTopicId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "description" : "De resource binnen dat basispad."
-          },
-          "ownerId" : {
-            "type" : "string",
-            "description" : "De gebruiker die het item heeft aangemaakt."
-          },
-          "publicationStatus" : {
-            "type" : "string",
-            "description" : "De publicatiestatus van de resource. Bepaalt of publiceren of depubliceren kan.",
-            "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ]
-          },
-          "allowedPublicationStatuses" : {
-            "type" : "array",
-            "description" : "De statussen waar dit item nu naartoe mag; leeg als dat niet kan. Stuur er een van naar PUT /publication-status.",
-            "items" : {
-              "type" : "string",
-              "enum" : [ "DRAFT", "PUBLISHED", "WITHDRAWN" ]
-            }
-          }
-        }
-      },
-      "DcatCatalogRecord" : {
-        "type" : "object",
-        "description" : "dcat:CatalogRecord volgens DCAT-AP-NL 3.0. Alles buiten die standaard staat onder meta.",
-        "properties" : {
-          "dctTitle" : {
-            "type" : "array",
-            "description" : "dct:title — titel van de gecatalogiseerde resource.",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "dcatListingDate" : {
-            "type" : "string",
-            "format" : "date-time",
-            "description" : "dcat:listingDate — opname in de catalogus."
-          },
-          "dctModified" : {
-            "type" : "string",
-            "format" : "date-time",
-            "description" : "dct:modified — laatste wijziging van de resource. Niet hetzelfde als dct:modified op de dataset, die de bronhouder aanlevert."
-          }
-        }
-      },
-      "PagedModelCatalogRecordListing" : {
-        "type" : "object",
-        "properties" : {
-          "content" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/CatalogRecordListing"
-            }
-          },
-          "page" : {
-            "$ref" : "#/components/schemas/PageMetadata"
           }
         }
       },

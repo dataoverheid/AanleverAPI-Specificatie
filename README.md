@@ -16,7 +16,7 @@ productie neemt.
 ## Versionering
 
 Het pad bevat de major versie (`/api/v1`). Elke response bevat een `API-Version`-header met de
-volledige semver-versie, bijvoorbeeld `0.11.0`. De API volgt de
+volledige semver-versie, bijvoorbeeld `0.42.0`. De API volgt de
 [NLGov REST API Design Rules 2.1.0](https://gitdocumentatie.logius.nl/publicatie/api/adr/2.1.0/).
 
 ## Authenticatie

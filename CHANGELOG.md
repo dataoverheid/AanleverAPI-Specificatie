@@ -5,6 +5,14 @@ Wijzigingen in de Aanlever API. Opmaak volgens [Keep a Changelog](https://keepac
 Tijdens de alpha kunnen breaking changes zonder deprecatietermijn voorkomen. Ze staan hier onder
 **Breaking**, zodat je voor het bijwerken van een integratie ziet wat je moet aanpassen.
 
+## [0.12.0] - 2026-09-09
+
+### Toegevoegd
+
+- Zoeken in de eigen catalog-records via `POST /api/v1/me/catalog-records/search`. Filtert op vrije
+  tekst, soort resource, publicatiestatus en een `dctModified`-periode. Paginering en sortering als
+  bij `GET /api/v1/me/catalog-records`.
+
 ## [0.11.0] - 2026-09-08
 
 ### Breaking
