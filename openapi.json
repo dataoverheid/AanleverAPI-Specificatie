@@ -8,7 +8,7 @@
       "url" : "https://data.overheid.nl",
       "email" : "opendata@overheid.nl"
     },
-    "version" : "0.12.0"
+    "version" : "0.14.0"
   },
   "servers" : [ {
     "url" : "/",
@@ -54,7 +54,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -73,7 +73,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -92,7 +92,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -169,6 +169,7 @@
                     "dctModified" : "2026-01-22T00:00:00Z",
                     "dcatDistribution" : [ {
                       "dcatAccessUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv",
+                      "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
                       "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                       "dctTitle" : [ "CSV-distributie" ],
                       "dctDescription" : [ "CSV-export van de waargenomen plantensoorten in het Erasmuspark." ],
@@ -199,6 +200,7 @@
                     "dcatTemporalResolution" : "P1D",
                     "admsSample" : [ {
                       "dcatAccessUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/sample-csv",
+                      "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
                       "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/sample-csv/download",
                       "dctTitle" : [ "Voorbeeld-CSV-distributie" ],
                       "dctDescription" : [ "Voorbeeldexport met een deel van de plantwaarnemingen." ],
@@ -220,7 +222,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -239,7 +241,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -327,7 +329,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -339,7 +341,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -358,7 +360,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -377,7 +379,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -423,7 +425,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -456,7 +458,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -497,7 +499,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -509,7 +511,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -542,7 +544,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -554,7 +556,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -573,7 +575,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -592,7 +594,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -665,7 +667,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -684,7 +686,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -772,7 +774,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -784,7 +786,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -803,7 +805,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -822,7 +824,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -868,7 +870,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -901,7 +903,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -944,7 +946,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -975,7 +977,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -994,7 +996,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1040,7 +1042,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1071,7 +1073,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1116,7 +1118,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1135,7 +1137,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -1147,7 +1149,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1166,7 +1168,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1185,7 +1187,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1236,7 +1238,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1256,7 +1258,13 @@
                         "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                         "dctTitle" : [ "CSV distribution" ],
                         "dctDescription" : [ "CSV export of observed plant species in Erasmuspark." ],
-                        "dctFormat" : "https://www.iana.org/assignments/media-types/text/csv"
+                        "dctFormat" : "http://publications.europa.eu/resource/authority/file-type/CSV",
+                        "dcatMediaType" : "https://www.iana.org/assignments/media-types/text/csv",
+                        "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+                        "dctLanguage" : "http://publications.europa.eu/resource/authority/language/NLD",
+                        "dcatapAvailability" : "http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE",
+                        "dcatByteSize" : 20480,
+                        "dctConformsTo" : [ "https://erasmuspark.org/schemas/plant-species/1.0.json" ]
                       }
                     }
                   }
@@ -1271,7 +1279,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1290,7 +1298,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1341,7 +1349,13 @@
                     "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                     "dctTitle" : [ "CSV distribution" ],
                     "dctDescription" : [ "CSV export of observed plant species in Erasmuspark." ],
-                    "dctFormat" : "https://www.iana.org/assignments/media-types/text/csv"
+                    "dctFormat" : "http://publications.europa.eu/resource/authority/file-type/CSV",
+                    "dcatMediaType" : "https://www.iana.org/assignments/media-types/text/csv",
+                    "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+                    "dctLanguage" : "http://publications.europa.eu/resource/authority/language/NLD",
+                    "dcatapAvailability" : "http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE",
+                    "dcatByteSize" : 20480,
+                    "dctConformsTo" : [ "https://erasmuspark.org/schemas/plant-species/1.0.json" ]
                   }
                 }
               }
@@ -1357,7 +1371,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1377,7 +1391,13 @@
                         "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                         "dctTitle" : [ "CSV distribution" ],
                         "dctDescription" : [ "CSV export of observed plant species in Erasmuspark." ],
-                        "dctFormat" : "https://www.iana.org/assignments/media-types/text/csv"
+                        "dctFormat" : "http://publications.europa.eu/resource/authority/file-type/CSV",
+                        "dcatMediaType" : "https://www.iana.org/assignments/media-types/text/csv",
+                        "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+                        "dctLanguage" : "http://publications.europa.eu/resource/authority/language/NLD",
+                        "dcatapAvailability" : "http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE",
+                        "dcatByteSize" : 20480,
+                        "dctConformsTo" : [ "https://erasmuspark.org/schemas/plant-species/1.0.json" ]
                       }
                     }
                   }
@@ -1392,7 +1412,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1411,7 +1431,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -1423,7 +1443,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1442,7 +1462,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1461,7 +1481,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1510,7 +1530,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -1522,7 +1542,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -1534,7 +1554,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1553,7 +1573,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1572,7 +1592,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1662,7 +1682,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1681,7 +1701,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1700,7 +1720,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -1712,7 +1732,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1779,7 +1799,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1798,7 +1818,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1817,7 +1837,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1888,6 +1908,7 @@
                     "dctModified" : "2026-01-22T00:00:00Z",
                     "dcatDistribution" : [ {
                       "dcatAccessUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv",
+                      "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
                       "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                       "dctTitle" : [ "CSV-distributie" ],
                       "dctDescription" : [ "CSV-export van de waargenomen plantensoorten in het Erasmuspark." ],
@@ -1918,6 +1939,7 @@
                     "dcatTemporalResolution" : "P1D",
                     "admsSample" : [ {
                       "dcatAccessUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/sample-csv",
+                      "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
                       "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/sample-csv/download",
                       "dctTitle" : [ "Voorbeeld-CSV-distributie" ],
                       "dctDescription" : [ "Voorbeeldexport met een deel van de plantwaarnemingen." ],
@@ -1948,7 +1970,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -1978,7 +2000,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2023,7 +2045,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2111,7 +2133,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -2123,7 +2145,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2142,7 +2164,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2217,7 +2239,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2236,7 +2258,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2255,7 +2277,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2274,7 +2296,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2317,7 +2339,13 @@
                     "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                     "dctTitle" : [ "CSV distribution" ],
                     "dctDescription" : [ "CSV export of observed plant species in Erasmuspark." ],
-                    "dctFormat" : "https://www.iana.org/assignments/media-types/text/csv"
+                    "dctFormat" : "http://publications.europa.eu/resource/authority/file-type/CSV",
+                    "dcatMediaType" : "https://www.iana.org/assignments/media-types/text/csv",
+                    "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+                    "dctLanguage" : "http://publications.europa.eu/resource/authority/language/NLD",
+                    "dcatapAvailability" : "http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE",
+                    "dcatByteSize" : 20480,
+                    "dctConformsTo" : [ "https://erasmuspark.org/schemas/plant-species/1.0.json" ]
                   }
                 }
               }
@@ -2342,7 +2370,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2362,7 +2390,13 @@
                         "dcatDownloadUrl" : "https://erasmuspark.org/datasets/plant-species/distributions/csv/download",
                         "dctTitle" : [ "CSV distribution" ],
                         "dctDescription" : [ "CSV export of observed plant species in Erasmuspark." ],
-                        "dctFormat" : "https://www.iana.org/assignments/media-types/text/csv"
+                        "dctFormat" : "http://publications.europa.eu/resource/authority/file-type/CSV",
+                        "dcatMediaType" : "https://www.iana.org/assignments/media-types/text/csv",
+                        "dctLicense" : "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+                        "dctLanguage" : "http://publications.europa.eu/resource/authority/language/NLD",
+                        "dcatapAvailability" : "http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE",
+                        "dcatByteSize" : 20480,
+                        "dctConformsTo" : [ "https://erasmuspark.org/schemas/plant-species/1.0.json" ]
                       }
                     }
                   }
@@ -2377,7 +2411,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2396,7 +2430,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -2408,7 +2442,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2427,7 +2461,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2446,7 +2480,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2559,7 +2593,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2578,7 +2612,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2597,7 +2631,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2636,7 +2670,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2655,7 +2689,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -2667,7 +2701,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2686,7 +2720,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2715,7 +2749,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -2727,7 +2761,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2789,7 +2823,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2808,7 +2842,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2827,7 +2861,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -2839,7 +2873,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2873,7 +2907,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2895,7 +2929,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2924,7 +2958,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2943,7 +2977,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -2955,7 +2989,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -2989,7 +3023,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             }
@@ -3001,7 +3035,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -3024,18 +3058,18 @@
           "200" : {
             "description" : "De OpenAPI-specificatie is opgehaald.",
             "headers" : {
+              "API-Version" : {
+                "description" : "Volledige API-versie volgens semver.",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "0.14.0"
+                }
+              },
               "Access-Control-Allow-Origin" : {
                 "description" : "CORS-header voor publieke documentatie.",
                 "schema" : {
                   "type" : "string",
                   "example" : "*"
-                }
-              },
-              "API-Version" : {
-                "description" : "Volledige API-versie volgens semver.",
-                "schema" : {
-                  "type" : "string",
-                  "example" : "0.12.0"
                 }
               }
             },
@@ -3054,7 +3088,7 @@
                 "description" : "Volledige API-versie volgens semver.",
                 "schema" : {
                   "type" : "string",
-                  "example" : "0.12.0"
+                  "example" : "0.14.0"
                 }
               }
             },
@@ -3338,22 +3372,36 @@
       "DcatDistribution" : {
         "type" : "object",
         "properties" : {
+          "dcatAccessService" : {
+            "type" : "string",
+            "format" : "uri",
+            "description" : "Verwijzing naar een dcat:DataService, niet de service zelf."
+          },
           "dcatAccessUrl" : {
             "type" : "string",
             "format" : "uri"
           },
-          "dcatDownloadUrl" : {
-            "type" : "string",
-            "format" : "uri"
-          },
-          "dctTitle" : {
+          "dcatapApplicableLegislation" : {
             "type" : "array",
             "items" : {
               "type" : "string",
-              "minLength" : 1
-            },
-            "maxItems" : 1,
-            "minItems" : 0
+              "format" : "uri"
+            }
+          },
+          "dcatapAvailability" : {
+            "type" : "string",
+            "format" : "uri"
+          },
+          "dcatByteSize" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "spdxChecksum" : {
+            "$ref" : "#/components/schemas/SpdxChecksum"
+          },
+          "dcatCompressFormat" : {
+            "type" : "string",
+            "format" : "uri"
           },
           "dctDescription" : {
             "type" : "array",
@@ -3364,11 +3412,88 @@
             "maxItems" : 1,
             "minItems" : 0
           },
+          "foafPage" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "uri"
+            }
+          },
+          "dcatDownloadUrl" : {
+            "type" : "string",
+            "format" : "uri"
+          },
           "dctFormat" : {
             "type" : "string",
             "format" : "uri"
+          },
+          "odrlHasPolicy" : {
+            "type" : "string",
+            "format" : "uri",
+            "description" : "Verwijzing naar een odrl:Policy, niet het beleid zelf."
+          },
+          "dctLanguage" : {
+            "type" : "string",
+            "format" : "uri"
+          },
+          "dctLicense" : {
+            "type" : "string",
+            "format" : "uri"
+          },
+          "dctConformsTo" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "uri"
+            }
+          },
+          "dcatMediaType" : {
+            "type" : "string",
+            "format" : "uri"
+          },
+          "dctModified" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "Datum (yyyy-MM-dd) of datum-tijd met tijdzone (2026-01-22T10:30:00Z). Een datum-tijd zonder tijdzone wordt geweigerd. Alleen een datum wordt middernacht UTC. Waarden komen terug in UTC.",
+            "example" : "2026-01-22T10:30:00Z"
+          },
+          "dcatPackageFormat" : {
+            "type" : "string",
+            "format" : "uri"
+          },
+          "dctIssued" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "Datum (yyyy-MM-dd) of datum-tijd met tijdzone (2026-01-22T10:30:00Z). Een datum-tijd zonder tijdzone wordt geweigerd. Alleen een datum wordt middernacht UTC. Waarden komen terug in UTC.",
+            "example" : "2026-01-22T10:30:00Z"
+          },
+          "dctRights" : {
+            "type" : "string",
+            "format" : "uri",
+            "description" : "Overige rechten die niet onder dctLicense of de dctAccessRights van de dataset vallen."
+          },
+          "dcatSpatialResolutionInMeters" : {
+            "type" : "number"
+          },
+          "admsStatus" : {
+            "type" : "string",
+            "format" : "uri"
+          },
+          "dcatTemporalResolution" : {
+            "type" : "string",
+            "description" : "Duur volgens ISO 8601, bijvoorbeeld P1D, PT15M of P1Y2M3D."
+          },
+          "dctTitle" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "minLength" : 1
+            },
+            "maxItems" : 1,
+            "minItems" : 0
           }
-        }
+        },
+        "required" : [ "dcatAccessUrl", "dctLicense" ]
       },
       "DctLocation" : {
         "type" : "object",
@@ -3446,6 +3571,22 @@
           }
         },
         "required" : [ "provAgent", "provHadRole" ]
+      },
+      "SpdxChecksum" : {
+        "type" : "object",
+        "properties" : {
+          "spdxAlgorithm" : {
+            "type" : "string",
+            "format" : "uri",
+            "example" : "http://spdx.org/rdf/terms#checksumAlgorithm_sha256"
+          },
+          "spdxChecksumValue" : {
+            "type" : "string",
+            "example" : "d41d8cd98f00b204e9800998ecf8427e",
+            "pattern" : "^([0-9a-fA-F]{2})+$"
+          }
+        },
+        "required" : [ "spdxAlgorithm", "spdxChecksumValue" ]
       },
       "DcatDatasetPayloadValidationErrorResponse" : {
         "type" : "object",

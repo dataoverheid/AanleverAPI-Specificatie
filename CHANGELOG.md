@@ -5,6 +5,23 @@ Wijzigingen in de Aanlever API. Opmaak volgens [Keep a Changelog](https://keepac
 Tijdens de alpha kunnen breaking changes zonder deprecatietermijn voorkomen. Ze staan hier onder
 **Breaking**, zodat je voor het bijwerken van een integratie ziet wat je moet aanpassen.
 
+## [0.14.0] - 2026-09-25
+
+### Breaking
+
+- Een distributie vereist `dcatAccessUrl` en `dctLicense`. Aanleveren, vervangen of bijwerken zonder
+  een van beide geeft een validatiefout.
+
+### Toegevoegd
+
+- De overige DCAT-AP-NL-velden bij een distributie: `admsStatus`, `dcatAccessService`,
+  `dcatByteSize`, `dcatCompressFormat`, `dcatMediaType`, `dcatPackageFormat`,
+  `dcatSpatialResolutionInMeters`, `dcatTemporalResolution`, `dcatapApplicableLegislation`,
+  `dcatapAvailability`, `dctConformsTo`, `dctIssued`, `dctLanguage`, `dctLicense`, `dctModified`,
+  `dctRights`, `foafPage`, `odrlHasPolicy` en `spdxChecksum` (met `spdxAlgorithm` en
+  `spdxChecksumValue`).
+
+
 ## [0.12.0] - 2026-09-09
 
 ### Toegevoegd
