@@ -5,6 +5,20 @@ Wijzigingen in de Aanlever API. Opmaak volgens [Keep a Changelog](https://keepac
 Tijdens de alpha kunnen breaking changes zonder deprecatietermijn voorkomen. Ze staan hier onder
 **Breaking**, zodat je voor het bijwerken van een integratie ziet wat je moet aanpassen.
 
+## [0.16.0] - 2026-10-20
+
+### Toegevoegd
+
+- Waardelijsten via `GET /api/v1/value-lists` (alle lijsten, zonder waarden),
+  `GET /api/v1/value-lists/{id}` (één lijst met haar waarden) en `GET /api/v1/value-lists/document`
+  (alle lijsten met hun waarden). Per waarde staan de URI die je in het DCAT-veld invult, labels per
+  taal, een eventuele `parent` en een eventuele `endDate`. Met `activeOnly=true` krijg je alleen
+  waarden zonder `endDate` of met een `endDate` vanaf vandaag. Lezen kan zonder in te loggen.
+- Foutcodes `VALUE_LIST_NOT_FOUND` (`404`) en `VALUE_LISTS_UNAVAILABLE` (`503`) in
+  `GET /api/v1/error-codes`.
+- `GET /api/v1/datasets/content-hashes`: de id en SHA-256 content-hash van elke gepubliceerde
+  dataset, zonder in te loggen. Daarmee zie je welke datasets sinds de vorige keer zijn gewijzigd.
+
 ## [0.14.0] - 2026-09-25
 
 ### Breaking
