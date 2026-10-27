@@ -5,6 +5,18 @@ Wijzigingen in de Aanlever API. Opmaak volgens [Keep a Changelog](https://keepac
 Tijdens de alpha kunnen breaking changes zonder deprecatietermijn voorkomen. Ze staan hier onder
 **Breaking**, zodat je voor het bijwerken van een integratie ziet wat je moet aanpassen.
 
+## [0.17.0] - 2026-10-27
+
+### Breaking
+
+- Velden met een waardelijst accepteren alleen waarden uit die lijst (`VALUE_NOT_IN_VALUE_LIST`). De
+  veldbeschrijving noemt de lijst. `dcatTheme` gebruikt nu TOOI-thema's in plaats van EU-datathema's.
+- `admsIdentifier` moet een URL zijn; opgeslagen waarden die dat niet zijn, zijn verwijderd.
+- Strengere grenzen voor lengte, dubbele waarden (`DUPLICATE_VALUE`) en getallen groter dan 0. Zie de
+  velden in de specificatie.
+- Schrijven van datasets en distributies geeft `503` (`VALUE_LISTS_UNAVAILABLE`) als de waardelijsten
+  niet beschikbaar zijn.
+
 ## [0.16.0] - 2026-10-20
 
 ### Toegevoegd

@@ -6,7 +6,7 @@ info:
     name: Data Overheid Nederland
     url: https://data.overheid.nl
     email: opendata@overheid.nl
-  version: 0.16.0
+  version: 0.17.0
 servers:
 - url: /
   description: Basis-URL van deze API.
@@ -49,7 +49,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -61,7 +61,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -73,7 +73,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -116,12 +116,12 @@ paths:
                     \ soortnaam en waarnemingsfrequentie."
                   dctAccrualPeriodicity: http://publications.europa.eu/resource/authority/frequency/DAILY
                   admsIdentifier:
-                  - ERASMUSPARK-PLANTEN-EENVOUDIG
+                  - https://erasmuspark.org/identificaties/planten-eenvoudig
                   dcatKeyword:
                   - flora
                   - plantensoorten
                   dcatTheme:
-                  - http://publications.europa.eu/resource/authority/data-theme/ENVI
+                  - https://identifier.overheid.nl/tooi/def/thes/top/c_0361ffb3
                   dcatapApplicableLegislation:
                   - http://data.europa.eu/eli/reg_impl/2023/138/oj
                   dcatapHvdCategory:
@@ -141,7 +141,7 @@ paths:
                     vcardHasEmail: mailto:info@erasmuspark.org
                     vcardHasUrl: https://erasmuspark.org/contact
                   dctAccessRights: http://publications.europa.eu/resource/authority/access-right/PUBLIC
-                  admsStatus: http://publications.europa.eu/resource/authority/dataset-status/AVAILABLE
+                  admsStatus: http://publications.europa.eu/resource/authority/dataset-status/COMPLETED
                   dctIssued: 2026-01-22T00:00:00Z
                   dctModified: 2026-01-22T00:00:00Z
                   dcatDistribution:
@@ -152,7 +152,7 @@ paths:
                     - CSV-distributie
                     dctDescription:
                     - CSV-export van de waargenomen plantensoorten in het Erasmuspark.
-                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                    dctFormat: http://publications.europa.eu/resource/authority/file-type/CSV
                   dcatHasVersion:
                   - https://erasmuspark.org/datasets/plant-species/simp/versions/1.1.0
                   dcatInSeries:
@@ -188,7 +188,7 @@ paths:
                     - Voorbeeld-CSV-distributie
                     dctDescription:
                     - Voorbeeldexport met een deel van de plantwaarnemingen.
-                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                    dctFormat: http://publications.europa.eu/resource/authority/file-type/CSV
                   provWasGeneratedBy:
                   - https://erasmuspark.org/activities/plant-sync
         required: true
@@ -200,7 +200,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -212,7 +212,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -279,7 +279,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -288,7 +288,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -300,7 +300,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -313,7 +313,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -348,7 +348,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -364,6 +364,18 @@ paths:
                     detail: Geef de queryparameter version mee met de waarde uit meta.version
                     instance: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee
                     code: DCAT_DATASET_VERSION_REQUIRED
+        "503":
+          description: De waardelijsten kunnen nu niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.17.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -371,7 +383,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -400,7 +412,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "409":
           description: De dataset is gewijzigd sinds deze versie werd opgehaald.
           headers:
@@ -408,7 +420,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -432,7 +444,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -441,7 +453,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -453,7 +465,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -465,7 +477,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -519,7 +531,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -531,7 +543,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -598,7 +610,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -607,7 +619,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -619,7 +631,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -632,7 +644,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -667,7 +679,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -683,6 +695,18 @@ paths:
                     detail: Geef de queryparameter version mee met de waarde uit meta.version
                     instance: /api/v1/datasets/5aa4d627-2b5a-4b69-b8e9-7af31d1288ee
                     code: DCAT_DATASET_VERSION_REQUIRED
+        "503":
+          description: De waardelijsten kunnen nu niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.17.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -690,7 +714,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -722,7 +746,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -744,7 +768,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -756,7 +780,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -790,7 +814,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -813,7 +837,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -848,7 +872,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -860,7 +884,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -869,7 +893,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -881,7 +905,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -893,7 +917,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -931,7 +955,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -964,7 +988,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -976,7 +1000,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1034,7 +1058,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -1067,7 +1091,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1079,7 +1103,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -1088,7 +1112,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1100,7 +1124,19 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "503":
+          description: De waardelijsten kunnen nu niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1112,7 +1148,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1147,7 +1183,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "401":
           description: Geen geldige sessiecookie of bearer-token. Geen response body.
           headers:
@@ -1155,7 +1191,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -1164,7 +1200,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1176,7 +1212,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1188,7 +1224,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1259,7 +1295,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -1272,7 +1308,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1284,7 +1320,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -1292,7 +1328,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1347,7 +1383,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -1359,7 +1395,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1371,7 +1407,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1425,12 +1461,12 @@ paths:
                     \ soortnaam en waarnemingsfrequentie."
                   dctAccrualPeriodicity: http://publications.europa.eu/resource/authority/frequency/DAILY
                   admsIdentifier:
-                  - ERASMUSPARK-PLANTEN-EENVOUDIG
+                  - https://erasmuspark.org/identificaties/planten-eenvoudig
                   dcatKeyword:
                   - flora
                   - plantensoorten
                   dcatTheme:
-                  - http://publications.europa.eu/resource/authority/data-theme/ENVI
+                  - https://identifier.overheid.nl/tooi/def/thes/top/c_0361ffb3
                   dcatapApplicableLegislation:
                   - http://data.europa.eu/eli/reg_impl/2023/138/oj
                   dcatapHvdCategory:
@@ -1450,7 +1486,7 @@ paths:
                     vcardHasEmail: mailto:info@erasmuspark.org
                     vcardHasUrl: https://erasmuspark.org/contact
                   dctAccessRights: http://publications.europa.eu/resource/authority/access-right/PUBLIC
-                  admsStatus: http://publications.europa.eu/resource/authority/dataset-status/AVAILABLE
+                  admsStatus: http://publications.europa.eu/resource/authority/dataset-status/COMPLETED
                   dctIssued: 2026-01-22T00:00:00Z
                   dctModified: 2026-01-22T00:00:00Z
                   dcatDistribution:
@@ -1461,7 +1497,7 @@ paths:
                     - CSV-distributie
                     dctDescription:
                     - CSV-export van de waargenomen plantensoorten in het Erasmuspark.
-                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                    dctFormat: http://publications.europa.eu/resource/authority/file-type/CSV
                   dcatHasVersion:
                   - https://erasmuspark.org/datasets/plant-species/simp/versions/1.1.0
                   dcatInSeries:
@@ -1497,7 +1533,7 @@ paths:
                     - Voorbeeld-CSV-distributie
                     dctDescription:
                     - Voorbeeldexport met een deel van de plantwaarnemingen.
-                    dctFormat: https://www.iana.org/assignments/media-types/text/csv
+                    dctFormat: http://publications.europa.eu/resource/authority/file-type/CSV
                   provWasGeneratedBy:
                   - https://erasmuspark.org/activities/plant-sync
         required: true
@@ -1516,7 +1552,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -1537,7 +1573,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1571,7 +1607,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1638,7 +1674,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -1647,7 +1683,19 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "503":
+          description: De waardelijsten kunnen nu niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1659,7 +1707,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1720,7 +1768,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -1732,7 +1780,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1744,7 +1792,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1756,7 +1804,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1815,7 +1863,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -1848,7 +1896,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1860,7 +1908,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "403":
           description: "De rol User of Admin ontbreekt (geen response body), of de\
             \ dataset hoort bij een andere organisatie."
@@ -1869,7 +1917,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1881,7 +1929,19 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemResponse"
+        "503":
+          description: De waardelijsten kunnen nu niet worden gelezen.
+          headers:
+            API-Version:
+              description: Volledige API-versie volgens semver.
+              schema:
+                type: string
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1893,7 +1953,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -1992,7 +2052,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2005,7 +2065,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2017,7 +2077,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2045,7 +2105,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             '*/*':
               schema:
@@ -2057,7 +2117,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "400":
           description: De request body is ongeldig of onvolledig.
           headers:
@@ -2065,7 +2125,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2077,7 +2137,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2097,7 +2157,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -2105,7 +2165,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2125,7 +2185,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2139,7 +2199,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2151,7 +2211,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2186,7 +2246,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2198,7 +2258,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2210,7 +2270,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2222,7 +2282,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2252,7 +2312,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2264,7 +2324,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2276,7 +2336,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2327,7 +2387,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2339,7 +2399,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2351,7 +2411,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -2359,7 +2419,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2383,7 +2443,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2397,7 +2457,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2419,7 +2479,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/json:
               schema:
@@ -2433,7 +2493,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2454,7 +2514,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             '*/*':
               schema:
@@ -2466,7 +2526,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -2474,7 +2534,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2498,7 +2558,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
         "500":
           description: Een onverwachte fout aan serverzijde; 'code' is INTERNAL_ERROR.
           headers:
@@ -2506,7 +2566,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2523,7 +2583,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
             Access-Control-Allow-Origin:
               description: CORS-header voor publieke documentatie.
               schema:
@@ -2540,7 +2600,7 @@ paths:
               description: Volledige API-versie volgens semver.
               schema:
                 type: string
-                example: 0.16.0
+                example: 0.17.0
           content:
             application/problem+json:
               schema:
@@ -2574,17 +2634,18 @@ components:
         dctAccrualPeriodicity:
           type: string
           format: uri
+          description: Waarde uit /api/v1/value-lists/eu_frequency.
         admsIdentifier:
           type: array
           items:
             type: string
             format: uri
-            minLength: 1
         dcatapApplicableLegislation:
           type: array
           items:
             type: string
             format: uri
+          uniqueItems: true
         admsSample:
           type: array
           items:
@@ -2592,6 +2653,7 @@ components:
         admsStatus:
           type: string
           format: uri
+          description: Waarde uit /api/v1/value-lists/eu_dataset_status.
         admsVersionNotes:
           type: array
           items:
@@ -2640,6 +2702,7 @@ components:
             format: uri
         dcatapHvdCategory:
           type: array
+          description: Waarden uit /api/v1/value-lists/eu_hvd_category.
           items:
             type: string
             format: uri
@@ -2660,7 +2723,9 @@ components:
           type: array
           items:
             type: string
-            minLength: 1
+            maxLength: 100
+            minLength: 0
+          uniqueItems: true
         dcatLandingPage:
           type: array
           items:
@@ -2668,6 +2733,7 @@ components:
             format: uri
         dctLanguage:
           type: array
+          description: Waarden uit /api/v1/value-lists/eu_language.
           items:
             type: string
             format: uri
@@ -2722,12 +2788,12 @@ components:
           description: "Duur volgens ISO 8601, bijvoorbeeld P1D, PT15M of P1Y2M3D."
         dcatTheme:
           type: array
+          description: Waarden uit /api/v1/value-lists/tooi_theme.
           items:
             type: string
             format: uri
-            minLength: 1
-            pattern: "^http://publications\\.europa\\.eu/resource/authority/data-theme/[A-Z_]+$"
           minItems: 1
+          uniqueItems: true
         dctType:
           type: string
           format: uri
@@ -2742,7 +2808,8 @@ components:
           type: array
           items:
             type: string
-            minLength: 1
+            maxLength: 500
+            minLength: 2
           maxItems: 1
           minItems: 1
       required:
@@ -2769,6 +2836,7 @@ components:
           items:
             type: string
             format: uri
+          uniqueItems: true
         dcatapAvailability:
           type: string
           format: uri
@@ -2784,7 +2852,8 @@ components:
           type: array
           items:
             type: string
-            minLength: 1
+            maxLength: 2000
+            minLength: 0
           maxItems: 1
           minItems: 0
         foafPage:
@@ -2798,6 +2867,7 @@ components:
         dctFormat:
           type: string
           format: uri
+          description: Waarde uit /api/v1/value-lists/eu_file_type.
         odrlHasPolicy:
           type: string
           format: uri
@@ -2850,7 +2920,8 @@ components:
           type: array
           items:
             type: string
-            minLength: 1
+            maxLength: 500
+            minLength: 2
           maxItems: 1
           minItems: 0
       required:
@@ -2953,6 +3024,8 @@ components:
           - INVALID_DURATION
           - INVALID_NUMERIC_VALUE
           - INVALID_SIZE
+          - DUPLICATE_VALUE
+          - VALUE_NOT_IN_VALUE_LIST
           - INVALID_CONTACT_POINT
           - INVALID_FIELD_VALUE
           - FIELD_NOT_MODIFIABLE
