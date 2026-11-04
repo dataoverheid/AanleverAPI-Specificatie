@@ -5,6 +5,18 @@ Wijzigingen in de Aanlever API. Opmaak volgens [Keep a Changelog](https://keepac
 Tijdens de alpha kunnen breaking changes zonder deprecatietermijn voorkomen. Ze staan hier onder
 **Breaking**, zodat je voor het bijwerken van een integratie ziet wat je moet aanpassen.
 
+## [0.18.0] - 2026-11-03
+
+### Breaking
+
+- `dctType` is een lijst van URI's.
+- `provQualifiedAttribution.provHadRole` accepteert alleen waarden uit `iso_role_code`.
+
+### Toegevoegd
+
+- `dcatContactPoint.vcardOrganizationName`.
+- `foafAgent` bij `dctCreator` en `dctPublisher`: URI van de organisatie.
+
 ## [0.17.0] - 2026-10-27
 
 ### Breaking
